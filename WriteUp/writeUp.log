@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.12.12)  28 APR 2021 13:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.15 (TeX Live 2014) (preloaded format=pdflatex 2014.12.12)  28 APR 2021 13:55
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1623,32 +1623,14 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
 (Font)              Font shape `T1/phv/b/n' tried instead on input line 72.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 11.39996pt on input line 72.
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 74.
 
-Package natbib Warning: Citation `Yeaman2018' on page 1 undefined on input line
- 74.
-
-
-Package natbib Warning: Citation `Aitken2013-yp' on page 1 undefined on input l
-ine 74.
+Underfull \hbox (badness 2608) in paragraph at lines 74--75
+\T1/ppl/m/n/10 (+20) against the con-se-quences of an-thro-pogenic cli-mate
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 74--75
 
- []
-
-
-Package natbib Warning: Citation `Haldane1948' on page 1 undefined on input lin
-e 76.
-
-
-Package natbib Warning: Citation `Coop2010' on page 1 undefined on input line 7
-6.
-
-
-Underfull \hbox (badness 3417) in paragraph at lines 76--78
-\T1/ppl/m/n/10 (+20) poly-mor-phisms (here-after SNPs), are es-ti-mated in
  []
 
 
@@ -1657,23 +1639,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 76--78
  []
 
 
-Package natbib Warning: Citation `Zhou2013' on page 1 undefined on input line 8
-0.
-
-
-Package natbib Warning: Citation `Schlotterer2014' on page 1 undefined on input
- line 80.
-
-
-Underfull \hbox (badness 3209) in paragraph at lines 80--81
-\T1/ppl/m/n/10 (+20) to es-ti-mate SNP ef-fects with rea-son-able sta-tis-ti-ca
-l
- []
-
-
-Underfull \hbox (badness 1418) in paragraph at lines 80--81
-\T1/ppl/m/n/10 (+20) of in-di-vid-u-als are es-ti-mated rather than in-di-vid-u
-al
+Underfull \hbox (badness 1509) in paragraph at lines 80--81
+\T1/ppl/m/n/10 (+20) rea-son-able sta-tis-ti-cal power, many in-di-vid-u-als ma
+y
  []
 
 
@@ -1688,18 +1656,9 @@ Underfull \vbox (badness 2680) has occurred while \output is active []
 
 
 ]
-
-Package natbib Warning: Citation `Meirmans2012' on page 2 undefined on input li
-ne 82.
-
-
-Package natbib Warning: Citation `Novembre2009' on page 2 undefined on input li
-ne 82.
-
-
-Underfull \hbox (badness 1484) in paragraph at lines 82--83
-\T1/ppl/m/n/10 (+20) if there is en-vi-ron-men-tal vari-a-tion across the fo-ca
-l
+Underfull \hbox (badness 1253) in paragraph at lines 82--83
+\T1/ppl/m/n/10 (+20) al-lele fre-quen-cies and en-vi-ron-men-tal vari-ables mea
+-
  []
 
 
@@ -1707,57 +1666,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 82--83
 
  []
 
-
-Package natbib Warning: Citation `Gautier2015' on page 2 undefined on input lin
-e 86.
-
-
-Package natbib Warning: Citation `Coop2010' on page 2 undefined on input line 8
-6.
-
-
-Package natbib Warning: Citation `Frichot2013' on page 2 undefined on input lin
-e 86.
-
-
-Package natbib Warning: Citation `Frichot2015' on page 2 undefined on input lin
-e 86.
-
-
-Package natbib Warning: Citation `Forester2016' on page 2 undefined on input li
-ne 86.
-
-
-Package natbib Warning: Citation `Forester2018' on page 2 undefined on input li
-ne 86.
-
-
-Package natbib Warning: Citation `Legendre2012' on page 2 undefined on input li
-ne 86.
-
-
-Package natbib Warning: Citation `Lotterhos2019-ki' on page 2 undefined on inpu
-t line 86.
-
-
-Package natbib Warning: Citation `Lotterhos2019-ki' on page 2 undefined on inpu
-t line 86.
-
-
-Package natbib Warning: Citation `Gautier2015' on page 2 undefined on input lin
-e 86.
-
-
-Underfull \hbox (badness 3536) in paragraph at lines 86--87
-\T1/ppl/m/n/10 (+20) GEA stud-ies in-cor-po-rat-ing mul-ti-ple en-vi-ron-men-ta
-l
- []
-
-
-Underfull \hbox (badness 1067) in paragraph at lines 86--87
-\T1/ppl/m/n/10 (+20) mode is rec-om-mended for ze-ro-ing in on par-tic-u-lar
- []
-
+LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
+(Font)              Font shape `T1/ppl/b/n' tried instead on input line 86.
 
 Underfull \hbox (badness 10000) in paragraph at lines 86--87
 
@@ -1767,17 +1677,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 86--87
 Underfull \vbox (badness 1533) has occurred while \output is active []
 
 
-
-Package natbib Warning: Citation `Hoban2016' on page 2 undefined on input line 
-88.
-
-
-Package natbib Warning: Citation `Bhatia2013' on page 2 undefined on input line
- 88.
-
-
-Package natbib Warning: Citation `Weir1984-tc' on page 2 undefined on input lin
-e 88.
+Underfull \hbox (badness 1253) in paragraph at lines 88--89
+\T1/ppl/m/n/10 (+20) In-di-vid-ual SNPs may pro-vide very noisy es-ti-mates
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 88--89
@@ -1801,19 +1703,6 @@ LaTeX Font Info:    Font shape `T1/phv/b/it' in size <10> not available
 (Font)              Font shape `T1/phv/b/sl' tried instead on input line 106.
 LaTeX Font Info:    Font shape `T1/phv/b/sl' will be
 (Font)              scaled to size 9.49997pt on input line 106.
-
-
-Package natbib Warning: Citation `WHITLOCK2005' on page 3 undefined on input li
-ne 108.
-
-
-Package natbib Warning: Citation `Weir1984-tc' on page 3 undefined on input lin
-e 108.
-
-
-Package natbib Warning: Citation `RN173' on page 3 undefined on input line 108.
-
-
 
 Underfull \hbox (badness 10000) in paragraph at lines 108--109
 
@@ -1866,27 +1755,15 @@ Underfull \hbox (badness 10000) in paragraph at lines 135--136
 
  []
 
-
-Package natbib Warning: Citation `RN173' on page 3 undefined on input line 137.
-
-
-
-Package natbib Warning: Citation `RN173' on page 3 undefined on input line 137.
-
-
-
+[3]
 Underfull \hbox (badness 10000) in paragraph at lines 137--138
 
  []
 
-[3]
+
 Underfull \hbox (badness 10000) in paragraph at lines 139--140
 
  []
-
-
-Package natbib Warning: Citation `Wang2016' on page 4 undefined on input line 1
-41.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 141--142
@@ -1904,32 +1781,27 @@ Underfull \hbox (badness 10000) in paragraph at lines 150--151
  []
 
 
-Package natbib Warning: Citation `Walsh' on page 4 undefined on input line 157.
-
-
-
-Package natbib Warning: Citation `Hereford2009' on page 4 undefined on input li
-ne 157.
-
-
-Package natbib Warning: Citation `Bontrager2020' on page 4 undefined on input l
-ine 157.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 156--158
 
  []
 
 
-Package natbib Warning: Citation `Haller2019-za' on page 4 undefined on input l
-ine 159.
+Underfull \hbox (badness 1859) in paragraph at lines 159--160
+\T1/ppl/m/n/10 (+20) the pan-mic-tic pop-u-la-tion di-vided into the $\OT1/ppl/
+m/n/10 (+20) 14 \OMS/zplm/m/n/10 ^^B \OT1/ppl/m/n/10 (+20) 14$
+ []
+
+
+Underfull \hbox (badness 1484) in paragraph at lines 159--160
+\T1/ppl/m/n/10 (+20) Af-ter 180,000 gen-er-a-tions, we im-posed the var-i-ous
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 159--160
 
  []
 
-<Plots/Figure1/Figure1.jpeg, id=42, 1003.75pt x 1204.5pt>
+[4] <Plots/Figure1/Figure1.jpeg, id=136, 1003.75pt x 1204.5pt>
 File: Plots/Figure1/Figure1.jpeg Graphic file (type jpg)
 
 <use Plots/Figure1/Figure1.jpeg>
@@ -1940,33 +1812,18 @@ Underfull \hbox (badness 10000) in paragraph at lines 172--173
 
  []
 
-[4] [5 <./Plots/Figure1/Figure1.jpeg>]
 
-Package natbib Warning: Citation `Gautier2015' on page 6 undefined on input lin
-e 193.
-
-
-Package natbib Warning: Citation `Gautier2015' on page 6 undefined on input lin
-e 193.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 6 undefined on input line
- 197.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 6 undefined on input line
- 199.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 6 undefined on input line
- 199.
+Underfull \hbox (badness 1708) in paragraph at lines 199--200
+[][][]\T1/ppl/m/n/10 (+20) Yeaman \T1/ppl/m/it/10 (+20) et al.[][] \T1/ppl/m/n/
+10 (+20) ([][]2016[][]) pro-posed the top-candidate
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 211--212
 
  []
 
-
+[5] [6 <./Plots/Figure1/Figure1.jpeg>]
 Underfull \hbox (badness 1147) in paragraph at lines 213--214
 \T1/ppl/m/n/10 (+20) 9,999bp long, so to model ge-nomic re-gions of low
  []
@@ -1976,7 +1833,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 213--214
 
  []
 
-[6]
+
 Underfull \hbox (badness 1062) in paragraph at lines 215--216
 []\T1/ppl/m/n/10 (+20) Tree se-quences were ma-nip-u-lated us-ing the tskit
  []
@@ -1987,38 +1844,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 215--216
  []
 
 
-Package natbib Warning: Citation `Yeaman2016' on page 7 undefined on input line
- 221.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 7 undefined on input line
- 221.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 7 undefined on input line
- 221.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 7 undefined on input line
- 221.
-
-
-Package natbib Warning: Citation `Mimura2007' on page 7 undefined on input line
- 241.
-
-
-Package natbib Warning: Citation `Mosca2014' on page 7 undefined on input line 
-241.
-
-
-Underfull \hbox (badness 1565) in paragraph at lines 241--242
-\T1/ppl/m/n/10 (+20) to het-ero-ge-neous en-vi-ron-ments. We mod-elled the
- []
-
-
-Underfull \hbox (badness 3302) in paragraph at lines 241--242
-\T1/ppl/m/n/10 (+20) un-der spa-tially re-stricted dis-per-sal, our sim-u-lated
-
+Underfull \hbox (badness 2020) in paragraph at lines 241--242
+\T1/ppl/m/n/10 (+20) our sim-u-lated stepping-stone pop-u-la-tions ex-hib-ited
  []
 
 
@@ -2027,8 +1854,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 241--242
  []
 
 
-Package natbib Warning: Citation `Pavy2012' on page 7 undefined on input line 2
-43.
+Underfull \hbox (badness 1082) in paragraph at lines 243--244
+\T1/ppl/m/n/10 (+20) dis-e-qui-lib-rium (LD) de-cayed to a back-ground level
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 243--244
@@ -2046,7 +1874,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 245--246
 
  []
 
-<Plots/neutralResults_histogram.pdf, id=67, 505.89pt x 867.24pt>
+<Plots/neutralResults_histogram.pdf, id=183, 505.89pt x 867.24pt>
 File: Plots/neutralResults_histogram.pdf Graphic file (type pdf)
 
 <use Plots/neutralResults_histogram.pdf>
@@ -2058,12 +1886,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 257--258
 
  []
 
-
+[7]
 Underfull \hbox (badness 10000) in paragraph at lines 259--260
 
  []
 
-[7]
+
 Underfull \hbox (badness 1168) in paragraph at lines 261--262
 []\T1/ppl/m/n/10 (+20) We then ap-plied the WZA to evolv-ing neu-trally
  []
@@ -2084,8 +1912,8 @@ Underfull \hbox (badness 2903) in paragraph at lines 265--265
  []
 
 
-<Plots/UncorrectedBayPassComparison_TruePositives.pdf, id=78, 722.7pt x 289.08p
-t>
+<Plots/UncorrectedBayPassComparison_TruePositives.pdf, id=197, 722.7pt x 289.08
+pt>
 File: Plots/UncorrectedBayPassComparison_TruePositives.pdf Graphic file (type p
 df)
  <use Plots/UncorrectedBayPassComparison_TruePositives.pdf>
@@ -2098,10 +1926,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 275--276
  []
 
 
-Package natbib Warning: Citation `Yeaman2016' on page 8 undefined on input line
- 277.
-
-
 Underfull \hbox (badness 2772) in paragraph at lines 281--283
 \T1/ppl/m/n/10 (+20) meth-ods when sim-u-la-tions as-sumed di-rec-tional or
  []
@@ -2112,8 +1936,8 @@ Underfull \hbox (badness 10000) in paragraph at lines 281--283
  []
 
 
-<Plots/UncorrectedBayPassComparison_FalsePositives.pdf, id=84, 722.7pt x 289.08
-pt>
+<Plots/UncorrectedBayPassComparison_FalsePositives.pdf, id=205, 722.7pt x 289.0
+8pt>
 File: Plots/UncorrectedBayPassComparison_FalsePositives.pdf Graphic file (type 
 pdf)
  <use Plots/UncorrectedBayPassComparison_FalsePositives.pdf>
@@ -2126,12 +1950,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 297--298
  []
 
 
-Package natbib Warning: Citation `Hoban2016' on page 8 undefined on input line 
-300.
-
-
 Underfull \hbox (badness 1817) in paragraph at lines 300--302
 \T1/ppl/m/n/10 (+20) SNPs into anal-y-sis win-dows to iden-tify sig-nals in
+ []
+
+
+Underfull \hbox (badness 1009) in paragraph at lines 300--302
+\T1/ppl/m/n/10 (+20) en-vi-ron-men-tal vari-able in ques-tion is only par-tiall
+y
  []
 
 
@@ -2139,7 +1965,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 300--302
 
  []
 
-
+[8 <./Plots/neutralResults_histogram.pdf>] [9 <./Plots/UncorrectedBayPassCompar
+ison_TruePositives.pdf> <./Plots/UncorrectedBayPassComparison_FalsePositives.pd
+f>]
 Underfull \hbox (badness 1033) in paragraph at lines 303--304
 \T1/ppl/m/n/10 (+20) en-vi-ron-men-tal vari-ables likely in-clude mea-sure-ment
 
@@ -2161,10 +1989,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 303--304
 
  []
 
-[8 <./Plots/neutralResults_histogram.pdf>] [9 <./Plots/UncorrectedBayPassCompar
-ison_TruePositives.pdf> <./Plots/UncorrectedBayPassComparison_FalsePositives.pd
-f>]
-<Plots/correlatedEnvironments_BCmapResults.pdf, id=120, 614.295pt x 289.08pt>
+<Plots/correlatedEnvironments_BCmapResults.pdf, id=243, 614.295pt x 289.08pt>
 File: Plots/correlatedEnvironments_BCmapResults.pdf Graphic file (type pdf)
 
 <use Plots/correlatedEnvironments_BCmapResults.pdf>
@@ -2172,22 +1997,12 @@ Package pdftex.def Info: Plots/correlatedEnvironments_BCmapResults.pdf used on
 input line 308.
 (pdftex.def)             Requested size: 314.58018pt x 148.03755pt.
 
-Underfull \hbox (badness 1331) in paragraph at lines 314--315
-[]\T1/ppl/m/n/10 (+20) We found that the window-based GEA meth-ods
- []
-
-
-Underfull \hbox (badness 1147) in paragraph at lines 314--315
-\T1/ppl/m/n/10 (+20) cor-re-la-tion be-tween the mea-sured en-vi-ron-ment and
- []
-
-
-Underfull \hbox (badness 4779) in paragraph at lines 314--315
+Underfull \hbox (badness 4779) in paragraph at lines 313--315
 \T1/ppl/m/n/10 (+20) sub-stan-tially out-per-formed both the top-candidate
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 314--315
+Underfull \hbox (badness 10000) in paragraph at lines 313--315
 
  []
 
@@ -2203,40 +2018,16 @@ Underfull \hbox (badness 10000) in paragraph at lines 316--317
  []
 
 
-Package natbib Warning: Citation `Yeaman2016' on page 10 undefined on input lin
-e 327.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 10 undefined on input lin
-e 327.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 10 undefined on input lin
-e 327.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 327--328
 
  []
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 10 undefined on input lin
-e 329.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 10 undefined on input lin
-e 329.
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 10 undefined on input lin
-e 329.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 329--330
 
  []
 
-<../dataAnalsis/Z_v_MAF_DD0.png, id=135, 1505.625pt x 3011.25pt>
+[10] <../dataAnalsis/Z_v_MAF_DD0.png, id=280, 1505.625pt x 3011.25pt>
 File: ../dataAnalsis/Z_v_MAF_DD0.png Graphic file (type png)
 
 <use ../dataAnalsis/Z_v_MAF_DD0.png>
@@ -2249,14 +2040,10 @@ Overfull \hbox (7.4595pt too wide) in paragraph at lines 333--334
  []
 
 
-Package natbib Warning: Citation `Yeaman2016' on page 10 undefined on input lin
-e 334.
-
-[10]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Overfull \vbox (160.28156pt too high) has occurred while \output is active []
+Overfull \vbox (172.28156pt too high) has occurred while \output is active []
 
 
 [11 <./Plots/correlatedEnvironments_BCmapResults.pdf> <../dataAnalsis/Z_v_MAF_D
@@ -2266,21 +2053,9 @@ Underfull \hbox (badness 10000) in paragraph at lines 353--356
  []
 
 
-Package natbib Warning: Citation `Yeaman2016' on page 12 undefined on input lin
-e 357.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 357--358
 
  []
-
-
-Package natbib Warning: Citation `Novembre2009' on page 12 undefined on input l
-ine 359.
-
-
-Package natbib Warning: Citation `Klopfstein2006' on page 12 undefined on input
- line 359.
 
 
 Underfull \hbox (badness 3930) in paragraph at lines 359--360
@@ -2294,16 +2069,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 359--360
  []
 
 
-Package natbib Warning: Citation `Hancock2011' on page 12 undefined on input li
-ne 361.
+Underfull \hbox (badness 1092) in paragraph at lines 361--362
+\T1/ppl/m/n/10 (+20) in-ferred ge-nealo-gies rather than in-di-vid-ual mark-ers
 
-
-Package natbib Warning: Citation `Hejase2020' on page 12 undefined on input lin
-e 361.
-
-
-Package natbib Warning: Citation `Ralph2020' on page 12 undefined on input line
- 361.
+ []
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 361--362
@@ -2329,101 +2098,26 @@ Underfull \hbox (badness 10000) in paragraph at lines 372--373
  []
 
 [12]
-
-Package natbib Warning: Citation `Sakamoto2019' on page 13 undefined on input l
-ine 374.
-
-
-Package natbib Warning: Citation `Barton1986' on page 13 undefined on input lin
-e 374.
-
-
-Package natbib Warning: Citation `Rieseberg2001' on page 13 undefined on input 
-line 374.
-
-
-Package natbib Warning: Citation `Noor2001' on page 13 undefined on input line 
-374.
-
-
-Package natbib Warning: Citation `Kirkpatrick2006' on page 13 undefined on inpu
-t line 374.
-
-
-Package natbib Warning: Citation `Yeaman2013' on page 13 undefined on input lin
-e 374.
-
-
-Package natbib Warning: Citation `Morales2019' on page 13 undefined on input li
-ne 374.
-
-
-Package natbib Warning: Citation `Todesco2020' on page 13 undefined on input li
-ne 374.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 374--375
 
  []
-
-
-Package natbib Warning: Citation `Stapley2017' on page 13 undefined on input li
-ne 376.
-
-
-Package natbib Warning: Citation `Booker2020' on page 13 undefined on input lin
-e 376.
 
 
 Underfull \hbox (badness 10000) in paragraph at lines 382--383
 
  []
 
-(./writeUp.bbl
 
-Package lineno Warning: Linenumber reference failed, 
-(lineno)                rerun to get it right.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-[13]
+
+(./writeUp.bbl [13]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 ) [14]
-
-Package natbib Warning: Citation `Yeaman2016' on page 15 undefined on input lin
-e 394.
-
-
-Package natbib Warning: Citation `Stapley2017' on page 15 undefined on input li
-ne 397.
-
-
-Package natbib Warning: Citation `RN173' on page 15 undefined on input line 397
-.
-
-
-Package natbib Warning: Citation `Pavy2012' on page 15 undefined on input line 
-397.
-
-
-Package natbib Warning: Citation `Pavy2012' on page 15 undefined on input line 
-397.
-
-
-Package natbib Warning: Citation `Hereford2009' on page 15 undefined on input l
-ine 406.
-
-
-Package natbib Warning: Citation `Bontrager2020' on page 15 undefined on input 
-line 406.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 406--407
 
  []
-
-
-Package natbib Warning: Citation `Yeaman2016' on page 15 undefined on input lin
-e 413.
 
 [15
 
@@ -2431,7 +2125,7 @@ e 413.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [16]
-<../SimulationStudy/directionalSelection/SummaryStats.png, id=226, 2409.0pt x 1
+<../SimulationStudy/directionalSelection/SummaryStats.png, id=389, 2409.0pt x 1
 505.625pt>
 File: ../SimulationStudy/directionalSelection/SummaryStats.png Graphic file (ty
 pe png)
@@ -2443,7 +2137,7 @@ ng used on input line 437.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [17 <../SimulationStudy/directionalSelection/SummaryStats.png>]
-<Plots/PhenotypePlot.png, id=232, 722.7pt x 433.62pt>
+<Plots/PhenotypePlot.png, id=395, 722.7pt x 433.62pt>
 File: Plots/PhenotypePlot.png Graphic file (type png)
 
 <use Plots/PhenotypePlot.png>
@@ -2453,7 +2147,7 @@ Package pdftex.def Info: Plots/PhenotypePlot.png used on input line 446.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [18 <./Plots/PhenotypePlot.png (PNG copy)>]
-<Plots/effectSizeDistributionPlot.pdf, id=237, 867.24pt x 361.35pt>
+<Plots/effectSizeDistributionPlot.pdf, id=400, 867.24pt x 361.35pt>
 File: Plots/effectSizeDistributionPlot.pdf Graphic file (type pdf)
 
 <use Plots/effectSizeDistributionPlot.pdf>
@@ -2464,7 +2158,7 @@ e 456.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [19 <./Plots/effectSizeDistributionPlot.pdf>]
-<Plots/selectionWZA_plot.pdf, id=249, 722.7pt x 433.62pt>
+<Plots/selectionWZA_plot.pdf, id=412, 722.7pt x 433.62pt>
 File: Plots/selectionWZA_plot.pdf Graphic file (type pdf)
 
 <use Plots/selectionWZA_plot.pdf>
@@ -2474,7 +2168,7 @@ Package pdftex.def Info: Plots/selectionWZA_plot.pdf used on input line 468.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [20 <./Plots/selectionWZA_plot.pdf>]
-<Plots/all_maps_plot_demo.pdf, id=263, 722.7pt x 1517.67pt>
+<Plots/all_maps_plot_demo.pdf, id=426, 722.7pt x 1517.67pt>
 File: Plots/all_maps_plot_demo.pdf Graphic file (type pdf)
 
 <use Plots/all_maps_plot_demo.pdf>
@@ -2485,7 +2179,7 @@ Overfull \vbox (13.2988pt too high) has occurred while \output is active []
 
 
 [21 <./Plots/all_maps_plot_demo.pdf>]
-<Plots/SNP_number.pdf, id=285, 1011.78pt x 361.35pt>
+<Plots/SNP_number.pdf, id=447, 1011.78pt x 361.35pt>
 File: Plots/SNP_number.pdf Graphic file (type pdf)
 
 <use Plots/SNP_number.pdf>
@@ -2495,7 +2189,7 @@ Package pdftex.def Info: Plots/SNP_number.pdf used on input line 487.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [22 <./Plots/SNP_number.pdf>]
-<Plots/SampleSizeComparison.pdf, id=296, 578.16pt x 722.7pt>
+<Plots/SampleSizeComparison.pdf, id=458, 578.16pt x 722.7pt>
 File: Plots/SampleSizeComparison.pdf Graphic file (type pdf)
 
 <use Plots/SampleSizeComparison.pdf>
@@ -2507,7 +2201,7 @@ Overfull \vbox (14.4274pt too high) has occurred while \output is active []
 
 
 [23 <./Plots/SampleSizeComparison.pdf>]
-<Plots/sample_maps.pdf, id=307, 1003.75pt x 1003.75pt>
+<Plots/sample_maps.pdf, id=469, 1003.75pt x 1003.75pt>
 File: Plots/sample_maps.pdf Graphic file (type pdf)
 
 <use Plots/sample_maps.pdf>
@@ -2517,7 +2211,7 @@ Package pdftex.def Info: Plots/sample_maps.pdf used on input line 506.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [24 <./Plots/sample_maps.pdf>]
-<Plots/SampleSizeComparison_individuals.pdf, id=407, 578.16pt x 289.08pt>
+<Plots/SampleSizeComparison_individuals.pdf, id=570, 578.16pt x 289.08pt>
 File: Plots/SampleSizeComparison_individuals.pdf Graphic file (type pdf)
 
 <use Plots/SampleSizeComparison_individuals.pdf>
@@ -2528,7 +2222,7 @@ ut line 515.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [25 <./Plots/SampleSizeComparison_individuals.pdf>]
-<../dataAnalsis/pineAnalysis_SuppFig.pdf, id=421, 433.62pt x 722.7pt>
+<../dataAnalsis/pineAnalysis_SuppFig.pdf, id=583, 433.62pt x 722.7pt>
 File: ../dataAnalsis/pineAnalysis_SuppFig.pdf Graphic file (type pdf)
 
 <use ../dataAnalsis/pineAnalysis_SuppFig.pdf>
@@ -2536,7 +2230,7 @@ Package pdftex.def Info: ../dataAnalsis/pineAnalysis_SuppFig.pdf used on input
 line 523.
 (pdftex.def)             Requested size: 309.13611pt x 515.22684pt.
 
-<Plots/recombinationRateHistogram.pdf, id=422, 433.62pt x 216.81pt>
+<Plots/recombinationRateHistogram.pdf, id=584, 433.62pt x 216.81pt>
 File: Plots/recombinationRateHistogram.pdf Graphic file (type pdf)
 
 <use Plots/recombinationRateHistogram.pdf>
@@ -2553,12 +2247,7 @@ AED: lastpage setting LastPage
 stogram.pdf>]
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 538.
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 538.
- (./writeUp.aux
-
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+ (./writeUp.aux)
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 538.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 538.
 Package rerunfilecheck Info: File `writeUp.out' has not changed.
@@ -2573,13 +2262,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 538.
  ) 
 Here is how much of TeX's memory you used:
- 24964 strings out of 493117
- 436498 string characters out of 6135432
- 655706 words of memory out of 5000000
- 27443 multiletter control sequences out of 15000+600000
- 101569 words of font info for 338 fonts, out of 8000000 for 9000
+ 25002 strings out of 493117
+ 436836 string characters out of 6135432
+ 658787 words of memory out of 5000000
+ 27446 multiletter control sequences out of 15000+600000
+ 103318 words of font info for 361 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,11n,56p,2719b,526s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,56p,2719b,505s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -2602,10 +2291,10 @@ ic/uhvro8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/palatino/upl
 b8a.pfb></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pf
 b></usr/local/texlive/2014/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr
 /local/texlive/2014/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on writeUp.pdf (27 pages, 3029440 bytes).
+Output written on writeUp.pdf (27 pages, 3035882 bytes).
 PDF statistics:
- 521 PDF objects out of 1000 (max. 8388607)
- 409 compressed objects within 5 object streams
+ 683 PDF objects out of 1000 (max. 8388607)
+ 570 compressed objects within 6 object streams
  93 named destinations out of 1000 (max. 500000)
  53346 words of extra memory for PDF output out of 61914 (max. 10000000)
 
