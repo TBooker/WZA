@@ -1,0 +1,99 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: writeUp.aux
+The style file: genetics.bst
+Database file #1: references.bib
+I was expecting an "="---line 316 of file references.bib
+ : <<<<<<< 
+ :         HEAD
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 421 of file references.bib
+ : <<<<<<< 
+ :         HEAD
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 432 of file references.bib
+ : <<<<<<< 
+ :         HEAD
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 456 of file references.bib
+ : <<<<<<< 
+ :         HEAD
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 492 of file references.bib
+ : <<<<<<< 
+ :         HEAD
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 730 of file references.bib
+ : <<<<<<< 
+ :         HEAD
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 856 of file references.bib
+ : <<<<<<< 
+ :         HEAD
+I'm skipping whatever remains of this entry
+I was expecting an "="---line 880 of file references.bib
+ : <<<<<<< 
+ :         HEAD
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "Haller2019"
+Warning--to sort, need author or key in Mimura2007
+Warning--empty author in Mimura2007
+Warning--empty year in Mimura2007; set to ????
+Warning--empty title in Mimura2007
+Warning--empty journal in Mimura2007
+Warning--empty year in RN173; set to ????
+Warning--empty title in RN173
+Warning--empty publisher in RN173
+Warning--empty year in Haller2019-za; set to ????
+Warning--empty title in Haller2019-za
+Warning--empty year in Mosca2014; set to ????
+Warning--empty title in Mosca2014
+Warning--empty year in Walsh; set to ????
+Warning--empty publisher in Walsh
+Warning--empty year in WHITLOCK2005; set to ????
+Warning--empty title in WHITLOCK2005
+Warning--empty year in Yeaman2013; set to ????
+Warning--empty title in Yeaman2013
+Warning--empty journal in Yeaman2013
+You've used 43 entries,
+            2762 wiz_defined-function locations,
+            915 strings with 13171 characters,
+and the built_in function-call counts, 24410 in all, are:
+= -- 2146
+> -- 1637
+< -- 23
++ -- 611
+- -- 476
+* -- 2633
+:= -- 4075
+add.period$ -- 73
+call.type$ -- 43
+change.case$ -- 380
+chr.to.int$ -- 49
+cite$ -- 64
+duplicate$ -- 1010
+empty$ -- 1491
+format.name$ -- 538
+if$ -- 4722
+int.to.chr$ -- 1
+int.to.str$ -- 1
+missing$ -- 40
+newline$ -- 132
+num.names$ -- 168
+pop$ -- 407
+preamble$ -- 1
+purify$ -- 343
+quote$ -- 0
+skip$ -- 625
+stack$ -- 0
+substring$ -- 1323
+swap$ -- 364
+text.length$ -- 3
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 378
+warning$ -- 19
+while$ -- 186
+width$ -- 0
+write$ -- 448
+(There were 8 error messages)

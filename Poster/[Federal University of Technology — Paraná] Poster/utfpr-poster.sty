@@ -1,0 +1,268 @@
+%%%% utfpr-poster.sty, 2019/12/01, 1.1
+%%%% Copyright (C) 2018-2019 Luiz E. M. Lima (luizeduardomlima@gmail.com)
+%%
+%% This work may be distributed and/or modified under the conditions of the
+%% LaTeX Project Public License, either version 1.3 of this license or (at your
+%% option) any later version.
+%% The latest version of this license is in
+%%   http://www.latex-project.org/lppl.txt
+%% and version 1.3 or later is part of all distributions of LaTeX version
+%% 2005/12/01 or later.
+%%
+%% This work has the LPPL maintenance status `maintained'.
+%%
+%% The Current Maintainer of this work is Luiz E. M. Lima.
+%%
+%% This work consists of the files utfpr-poster.sty and utfpr-poster.tex.
+%%
+%% A brief description of this work is in readme.txt.
+
+%% Identificação e modificações
+\NeedsTeXFormat{LaTeX2e}[2005/12/01]
+\ProvidesPackage{utfpr-poster}[2019/12/01 v1.1 utfpr-poster package]
+%%%% Alteração de alguns pacotes, comandos, formatações e tipografias.
+%%%% Alteração de nomes dos arquivos (utfprpgtex-poster --> utfpr-poster).
+%%%% Inserção de opção para uso do estilo numérico da ABNT.
+% \ProvidesPackage{utfprpgtex-poster}[2018/09/28 v1.0 utfprpgtex-poster package]
+%%%% Criação dos arquivos constituintes.
+
+%% Opções do pacote
+\newif\if@rmfonttimes%
+\DeclareOption{Times=true}{\@rmfonttimestrue}
+\DeclareOption{Times=false}{\@rmfonttimesfalse}
+\DeclareOption{Times}{\ExecuteOptions{Times = true}}
+\newif\if@biburlslinks%
+\DeclareOption{BibURLs=true}{\@biburlslinkstrue}
+\DeclareOption{BibURLs=false}{\@biburlslinksfalse}
+\DeclareOption{BibURLs}{\ExecuteOptions{BibURLs = true}}
+\newif\if@useabntnum%
+\newif\if@useabntnumbrkt%
+\DeclareOption{ABNTNum=none}{%
+  \@useabntnumfalse%
+  \@useabntnumbrktfalse%
+}
+\DeclareOption{ABNTNum=dflt}{%
+  \@useabntnumtrue%
+  \@useabntnumbrktfalse%
+}
+\DeclareOption{ABNTNum=brkt}{%
+  \@useabntnumtrue%
+  \@useabntnumbrkttrue%
+}
+\DeclareOption*{%
+  \ifx\CurrentOption\@declaredoptions%
+  \else%
+    \PassOptionsToPackage{\CurrentOption}{beamerposter}%
+    \@ifpackagewith{beamerposter}{\CurrentOption}{}{%
+      \PackageWarning{utfpr-poster}{Unknown option `\CurrentOption'}%
+    }%
+  \fi%
+}
+\ExecuteOptions{%
+  Times   = false,%
+  BibURLs = false,%
+  ABNTNum = none,%
+}
+\ProcessOptions\relax%
+
+%% Pacotes utilizados
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage{babel}
+\RequirePackage{lmodern}
+\if@rmfonttimes%
+  \RequirePackage{newtxtext}
+  \RequirePackage{newtxmath}
+\fi%
+\RequirePackage{textcomp}
+\RequirePackage{fontawesome}
+\RequirePackage{microtype}
+\RequirePackage{geometry}
+\RequirePackage{amsmath}
+\RequirePackage{icomma}
+\RequirePackage{booktabs}
+\RequirePackage{csquotes}
+\RequirePackage{xpatch}
+\if@useabntnum%
+  \RequirePackage[%
+    style      = abnt-numeric,%
+    \if@useabntnumbrkt%
+      citestyle = abnt-num-brkt,%
+    \fi%
+    natbib     = true,%
+    sorting    = none,%
+    uniquename = init,%
+    giveninits = true,%
+    comp       = true,%
+  ]{biblatex}
+\else%
+  \RequirePackage[%
+    style      = abnt,%
+    natbib     = true,%
+    uniquename = init,%
+    giveninits = true,%
+  ]{biblatex}
+\fi%
+\RequirePackage[debug]{beamerposter}
+
+%% Fontes
+\@ifpackageloaded{lmodern}{%
+  \DeclareFontFamily{OMX}{lmex}{}%
+  \DeclareFontShape{OMX}{lmex}{m}{n}{<->lmex10}{}%
+}{}
+\renewcommand*{\normalfont}{\relax}
+
+%% Cores
+\definecolor{ADarkBlue}{RGB}{0, 0, 85}
+\definecolor{UTFPRBlack}{RGB}{55, 52, 53}
+\definecolor{UTFPRYellow}{RGB}{254, 203, 41}
+\definecolor{GovGray}{RGB}{88, 89, 91}
+
+%% Hiperlinks e urls
+\hypersetup{%
+  breaklinks         = true,%
+  colorlinks         = true,%
+  allcolors          = ADarkBlue,%
+  pdfdisplaydoctitle = true,%
+  pdfpagelayout      = SinglePage,%
+}
+\DeclareUrlCommand\URL{%
+  \renewcommand*{\UrlFont}{\ttfamily\color{ADarkBlue}}%
+  \renewcommand*{\UrlLeft}{<}%
+  \renewcommand*{\UrlRight}{>}%
+}
+\g@addto@macro\UrlBreaks{\UrlOrds}
+
+%% Variáveis dependentes do idioma
+\iflanguage{english}{%
+  \newcommand*{\govlogofile}{government}%
+  \newcommand*{\meclogoname}{%
+    MINISTRY OF\\%
+    \textbf{EDUCATION}%
+  }%
+  \newcommand*{\utfprname}{Federal University of Technology --- Paraná}%
+  \newcommand*{\sourcename}{Source}%
+}{%
+  \newcommand*{\govlogofile}{governo}%
+  \newcommand*{\meclogoname}{%
+    MINISTÉRIO DA\\%
+    \textbf{EDUCAÇÃO}%
+  }%
+  \newcommand*{\utfprname}{Universidade Tecnológica Federal do Paraná}%
+  \newcommand*{\sourcename}{Fonte}%
+  \AtBeginDocument{\frenchspacing}%
+}
+
+%% Definições de comandos
+\newcommand*{\arg@ifnotempty}[3][]{%
+  \ifx&#2&%
+    #1%
+  \else%
+    #3%
+  \fi%
+}
+\newcommand*{\govlogo}[1][]{\includegraphics[width = #1\columnwidth]{./Logos/\govlogofile}}
+\newcommand*{\meclogo}[1][]{%
+  \begin{minipage}[c][][c]{#1\columnwidth}%
+  \begin{flushleft}%
+  \scriptsize\sffamily\textcolor{GovGray}{\meclogoname}%
+  \end{flushleft}%
+  \end{minipage}%
+}
+\newcommand*{\govlogobottom}[1][20mm]{\includegraphics[height = #1]{./Logos/\govlogofile}}
+\newcommand*{\meclogobottom}[1][20mm]{%
+  \begin{minipage}[b][#1][b]{45mm}%
+  \begin{flushright}%
+  \tiny\sffamily\textcolor{GovGray}{\meclogoname}%
+  \end{flushright}%
+  \end{minipage}%
+}
+\newbox{\orcidiconbox}
+\sbox{\orcidiconbox}{\includegraphics[height = 6ex]{./Logos/orcid-id}}
+\newcommand*{\orcidlinkicon}[1]{\href{https://orcid.org/#1}{~\usebox{\orcidiconbox}}}
+\newcommand*{\email}[2][]{\textsuperscript{#1}\href{mailto:#2}{\faEnvelopeO~#2}}
+\newcommand*{\affil}[2][]{\textsuperscript{#1}\faInstitution~#2}
+\newcommand*{\linkicon}{{\small\faExternalLink}}
+\newcommand*{\source}[1]{\par\small\sourcename:\space#1}
+\newcommand*{\respnotice}[2][]{\tiny\faStickyNoteO~\arg@ifnotempty{#1}{\textbf{#1:}\space}{#2}}
+\newcommand*{\yellowvrule}[1][1.5pt]{{\color{UTFPRYellow}\vrule width #1}}
+\newcommand*{\sep}{\unskip,\quad}
+\renewcommand*{\beamer@andtitle}{\sep}
+\renewcommand*{\beamer@andinst}{\\}
+\pdfstringdefDisableCommands{%
+  \renewcommand*{\orcidlinkicon}{\@gobble}%
+  \renewcommand*{\sep}{, }%
+  \renewcommand*{\\}{}%
+}
+
+%% Texto
+\geometry{%
+  left  = 20mm,%
+  right = 20mm,%
+}
+
+%% Customizações da classe beamer
+\mode<presentation>{%
+  \usetheme{Pittsburgh}%
+  \usefonttheme[onlymath]{serif}%
+  \usebackgroundtemplate{\includegraphics[width = \paperwidth, height = \paperheight]{./Logos/utfpr-fundo}}%
+  \setbeamercolor*{title page}{fg = black}%
+  \setbeamercolor*{title}{fg = black}%
+  \setbeamercolor*{bibliography entry author}{fg = black}%
+  \setbeamercolor*{bibliography entry title}{fg = black}%
+  \setbeamercolor*{bibliography entry location}{fg = black}%
+  \setbeamercolor*{bibliography entry note}{fg = black}%
+  \setbeamercolor*{bibliography item}{fg = black}%
+  \setbeamercolor*{item projected}{fg = UTFPRBlack, bg = UTFPRYellow}%
+  \setbeamercolor*{subitem projected}{fg = UTFPRBlack, bg = UTFPRYellow}%
+  \setbeamercolor*{subsubitem projected}{fg = UTFPRBlack, bg = UTFPRYellow}%
+  \setbeamercolor*{structure}{fg = UTFPRYellow}%
+  \setbeamercolor*{block title}{fg = UTFPRBlack, bg = UTFPRYellow}%
+  \setbeamercolor*{caption name}{fg = black}%
+  \setbeamerfont{title}{series = \bfseries}%
+  \setbeamerfont{institute}{size = \small}%
+  \setbeamerfont{block title}{series = \parbox{\z@}{\rule{\z@}{15mm}}}%
+  \if@useabntnum%
+    \setbeamertemplate{bibliography item}{\insertbiblabel}%
+  \else%
+    \setbeamertemplate{bibliography item}{\scalebox{1.5}{\pgfuseimage{beamericonarticle}}}%
+  \fi%
+  \setbeamertemplate{caption}[numbered]%
+  \setbeamertemplate{caption label separator}[endash]%
+}
+
+%% Citações e referências
+\DeclareLanguageMapping{brazilian}{brazilian-abnt}
+\@ifpackagelater{biblatex-abnt}{2017/07/28}{%
+  \DeclareLanguageMapping{english}{abnt-english}%
+}{%
+  \DeclareLanguageMapping{english}{english-abnt}%
+  \NewBibliographyString{sheettotal, sheettotals}%
+  \DefineBibliographyStrings{english}{sheettotal = {s\adddot}, sheettotals = {s\adddot}}%
+}
+\DeclareLanguageMappingSuffix{}
+\if@biburlslinks%
+\else%
+  \DeclareFieldFormat{url}{\bibstring{urlfrom}\addcolon\space\href{#1}{\scriptsize\faExternalLink}}
+\fi%
+\renewcommand*{\bibfont}{\footnotesize}
+\setlength{\biblabelsep}{\labelsep}
+\setlength{\bibitemsep}{\itemsep}
+\if@useabntnum%
+\else%
+  \defbibenvironment{bibliography}{%
+    \list{\printfield[labelalphawidth]{labelalpha}}{%
+      % \setlength{\labelwidth}{\labelalphawidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}%
+    }%
+    \renewcommand*{\makelabel}[1]{\hss##1}%
+  }{\endlist}{\item}
+\fi%
+\@ifpackagelater{biblatex}{2017/12/19}{}{%
+  \RequirePackage{silence}%
+  \WarningFilter{biblatex}{Patching footnotes failed}%
+}
