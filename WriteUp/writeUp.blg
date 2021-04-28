@@ -3,97 +3,46 @@ Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: writeUp.aux
 The style file: genetics.bst
 Database file #1: references.bib
-I was expecting an "="---line 316 of file references.bib
- : <<<<<<< 
- :         HEAD
-I'm skipping whatever remains of this entry
-I was expecting an "="---line 421 of file references.bib
- : <<<<<<< 
- :         HEAD
-I'm skipping whatever remains of this entry
-I was expecting an "="---line 432 of file references.bib
- : <<<<<<< 
- :         HEAD
-I'm skipping whatever remains of this entry
-I was expecting an "="---line 456 of file references.bib
- : <<<<<<< 
- :         HEAD
-I'm skipping whatever remains of this entry
-I was expecting an "="---line 492 of file references.bib
- : <<<<<<< 
- :         HEAD
-I'm skipping whatever remains of this entry
-I was expecting an "="---line 730 of file references.bib
- : <<<<<<< 
- :         HEAD
-I'm skipping whatever remains of this entry
-I was expecting an "="---line 856 of file references.bib
- : <<<<<<< 
- :         HEAD
-I'm skipping whatever remains of this entry
-I was expecting an "="---line 880 of file references.bib
- : <<<<<<< 
- :         HEAD
-I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "Haller2019"
-Warning--to sort, need author or key in Mimura2007
-Warning--empty author in Mimura2007
-Warning--empty year in Mimura2007; set to ????
-Warning--empty title in Mimura2007
-Warning--empty journal in Mimura2007
-Warning--empty year in RN173; set to ????
-Warning--empty title in RN173
-Warning--empty publisher in RN173
-Warning--empty year in Haller2019-za; set to ????
-Warning--empty title in Haller2019-za
-Warning--empty year in Mosca2014; set to ????
-Warning--empty title in Mosca2014
-Warning--empty year in Walsh; set to ????
-Warning--empty publisher in Walsh
-Warning--empty year in WHITLOCK2005; set to ????
-Warning--empty title in WHITLOCK2005
-Warning--empty year in Yeaman2013; set to ????
-Warning--empty title in Yeaman2013
-Warning--empty journal in Yeaman2013
 You've used 43 entries,
             2762 wiz_defined-function locations,
-            915 strings with 13171 characters,
-and the built_in function-call counts, 24410 in all, are:
-= -- 2146
-> -- 1637
-< -- 23
-+ -- 611
-- -- 476
-* -- 2633
-:= -- 4075
-add.period$ -- 73
+            934 strings with 13788 characters,
+and the built_in function-call counts, 24496 in all, are:
+= -- 2174
+> -- 1660
+< -- 21
++ -- 618
+- -- 482
+* -- 2653
+:= -- 4139
+add.period$ -- 80
 call.type$ -- 43
-change.case$ -- 380
+change.case$ -- 387
 chr.to.int$ -- 49
-cite$ -- 64
-duplicate$ -- 1010
-empty$ -- 1491
-format.name$ -- 538
-if$ -- 4722
+cite$ -- 43
+duplicate$ -- 987
+empty$ -- 1494
+format.name$ -- 547
+if$ -- 4726
 int.to.chr$ -- 1
 int.to.str$ -- 1
 missing$ -- 40
 newline$ -- 132
-num.names$ -- 168
-pop$ -- 407
+num.names$ -- 172
+pop$ -- 348
 preamble$ -- 1
-purify$ -- 343
+purify$ -- 345
 quote$ -- 0
-skip$ -- 625
+skip$ -- 616
 stack$ -- 0
-substring$ -- 1323
-swap$ -- 364
-text.length$ -- 3
+substring$ -- 1360
+swap$ -- 348
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 378
-warning$ -- 19
-while$ -- 186
+warning$ -- 0
+while$ -- 190
 width$ -- 0
-write$ -- 448
-(There were 8 error messages)
+write$ -- 461
+(There was 1 warning)

@@ -109,6 +109,8 @@
 % Bibliography
 \usepackage{natbib} \bibpunct{(}{)}{;}{author-year}{}{,}
 \bibliographystyle{genetics}
+%\bibliographystyle{apa}
+
 \addto{\captionsenglish}{\renewcommand{\refname}{Literature Cited}}
 \setlength{\bibsep}{0.0pt}
 

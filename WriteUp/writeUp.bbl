@@ -1,8 +1,5 @@
 \begin{thebibliography}{43}
 
-\bibitem[{Mim}(????)]{Mimura2007}
-????  .
-
 \bibitem[{Aitken {\rm and} Whitlock}(2013)]{Aitken2013-yp}
 {Aitken, S.~N. {\rm and} M.~C. Whitlock}, 2013 {Assisted Gene Flow to
   Facilitate Local Adaptation to Climate Change}. Annu. Rev. Ecol. Evol. Syst.
@@ -29,8 +26,9 @@
   recombination rate affects detection of outliers in genome scans under
   neutrality}. Molecular Ecology {\bf 29}: 4274--4279.
 
-\bibitem[{Charlesworth {\rm and} Charlesworth}(????)]{RN173}
-{Charlesworth, B. {\rm and} D.~Charlesworth}, ???? Greenwood Village, Colorado.
+\bibitem[{Charlesworth {\rm and} Charlesworth}(2010)]{RN173}
+{Charlesworth, B. {\rm and} D.~Charlesworth}, 2010 {\em {Elements of
+  Evolutionary Genetics}\/}. Roberts \& Company, Greenwood Village, Colorado.
 
 \bibitem[{Coop {\em et~al.\/}}(2010){Coop, Witonsky, {Di Rienzo}, {\rm and}
   Pritchard}]{Coop2010}
@@ -70,10 +68,11 @@
 {Haldane, J.~B.}, 1948 {The theory of a cline}. Journal of Genetics {\bf 48}:
   277--284.
 
-\bibitem[{Haller {\em et~al.\/}}(????){Haller, Galloway, Kelleher, Messer, {\rm
+\bibitem[{Haller {\em et~al.\/}}(2019){Haller, Galloway, Kelleher, Messer, {\rm
   and} Ralph}]{Haller2019-za}
 {Haller, B.~C., J.~Galloway, J.~Kelleher, P.~W. Messer, {\rm and} P.~L. Ralph},
-  ???? Mol. Ecol. Resour. pp. 552--566.
+  2019 {Tree-sequence recording in {SLiM} opens new horizons for forward-time
+  simulation of whole genomes}. Mol. Ecol. Resour. {\bf 19}: 552--566.
 
 \bibitem[{Hancock {\em et~al.\/}}(2011){Hancock, Brachi, Faure, Horton,
   Jarymowycz, Sperone, Toomajian, Roux, {\rm and} Bergelson}]{Hancock2011}
@@ -119,16 +118,22 @@
 {Meirmans, P.~G.}, 2012 {The trouble with isolation by distance}. Molecular
   Ecology {\bf 21}: 2839--2846.
 
+\bibitem[{Mimura {\rm and} Aitken}(2007)]{Mimura2007}
+{Mimura, M. {\rm and} S.~N. Aitken}, 2007 {Adaptive gradients and
+  isolation-by-distance with postglacial migration in Picea sitchensis}.
+  Heredity {\bf 99}: 224--232.
+
 \bibitem[{Morales {\em et~al.\/}}(2019){Morales, Faria, Johannesson, Larsson,
   Panova, Westram, {\rm and} Butlin}]{Morales2019}
 {Morales, H.~E., R.~Faria, K.~Johannesson, T.~Larsson, M.~Panova, {\em
   et~al.\/}}, 2019 {Genomic architecture of parallel ecological divergence:
   Beyond a single environmental contrast}. Science Advances {\bf 5}: eaav9963.
 
-\bibitem[{Mosca {\em et~al.\/}}(????){Mosca, Gonz{\'{a}}lez-Mart{\'{i}}nez,
+\bibitem[{Mosca {\em et~al.\/}}(2014){Mosca, Gonz{\'{a}}lez-Mart{\'{i}}nez,
   {\rm and} Neale}]{Mosca2014}
-{Mosca, E., S.~C. Gonz{\'{a}}lez-Mart{\'{i}}nez, {\rm and} D.~B. Neale}, ????
-  New Phytologist pp. 180--192.
+{Mosca, E., S.~C. Gonz{\'{a}}lez-Mart{\'{i}}nez, {\rm and} D.~B. Neale}, 2014
+  {Environmental versus geographical determinants of genetic structure in two
+  subalpine conifers}. New Phytologist {\bf 201}: 180--192.
 
 \bibitem[{Noor {\em et~al.\/}}(2001){Noor, Gratos, Bertucci, {\rm and}
   Reiland}]{Noor2001}
@@ -182,9 +187,9 @@
   {\em et~al.\/}}, 2020 {Massive haplotypes underlie ecotypic differentiation
   in sunflowers}. Nature {\bf 584}: 602--607.
 
-\bibitem[{Walsh {\rm and} Lynch}(????)]{Walsh}
-{Walsh, B. {\rm and} M.~Lynch}, ???? {\em {Evolution and Selection of
-  Quantitative Traits}\/}.
+\bibitem[{Walsh {\rm and} Lynch}(2018)]{Walsh}
+{Walsh, B. {\rm and} M.~Lynch}, 2018 {\em {Evolution and Selection of
+  Quantitative Traits}\/}. Oxford University Press.
 
 \bibitem[{Wang {\em et~al.\/}}(2016){Wang, Hamann, Spittlehouse, {\rm and}
   Carroll}]{Wang2016}
@@ -196,11 +201,15 @@
 {Weir, B.~S. {\rm and} C.~C. Cockerham}, 1984 {Estimating F-statistics for the
   analysis of population structure}. Evolution {\bf 38}: 1358--1370.
 
-\bibitem[{Whitlock}(????)]{WHITLOCK2005}
-{Whitlock, M.~C.}, ???? Journal of Evolutionary Biology pp. 1368--1373.
+\bibitem[{Whitlock}(2005)]{WHITLOCK2005}
+{Whitlock, M.~C.}, 2005 {Combining probability from independent tests: the
+  weighted Z-method is superior to Fisher's approach}. Journal of Evolutionary
+  Biology {\bf 18}: 1368--1373.
 
-\bibitem[{Yeaman}(????)]{Yeaman2013}
-{Yeaman, S.}, ????  .
+\bibitem[{Yeaman}(2013)]{Yeaman2013}
+{Yeaman, S.}, 2013 {Genomic rearrangements and the evolution of clusters of
+  locally adaptive loci}. Proceedings of the National Academy of Sciences of
+  the United States of America {\bf 110}: E1743--E1751.
 
 \bibitem[{Yeaman {\em et~al.\/}}(2018){Yeaman, Gerstein, Hodgins, {\rm and}
   Whitlock}]{Yeaman2018}
