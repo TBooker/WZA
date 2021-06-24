@@ -12,7 +12,7 @@ dir_trunc_8SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/S
 dir_trunc_8SNPs$snps <- "WZA - 8 SNPs"
 
 dir_trunc_w10000 <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/BayPassResults/s0.003/analysisFiles/trunc_sampled.WZA.summary.csv")
-dir_trunc_w10000$snps <- "WZA - 10,000bp Window"
+dir_trunc_w10000$snps <- "WZA - f10,000bp Window"
 
 SNP_num_trunc <- rbind(dir_trunc_2SNPs, dir_trunc_4SNPs, dir_trunc_8SNPs)
 
@@ -20,13 +20,12 @@ SNP_num_trunc <- rbind(dir_trunc_2SNPs, dir_trunc_4SNPs, dir_trunc_8SNPs)
 SNP_plot_trunc <- ggplot(SNP_num_trunc[SNP_num_trunc$rep == "mean",], aes( x = top, y = TP_WZA_uncor, col = snps))+
   geom_line(lwd= 1.2)+
   geom_line(data=dir_trunc_w10000[dir_trunc_w10000$rep == "mean",], aes( x = top, y =TP_SNP_uncor, col = "Single SNP") , lwd= 1.2)+
-  geom_line(data=dir_trunc_w10000[dir_trunc_w10000$rep == "mean",], aes( x = top, y =TP_WZA_uncor, col = "WZA - 10,000bp Window") , lwd= 1.2)+
+  geom_line(data=dir_trunc_w10000[dir_trunc_w10000$rep == "mean",], aes( x = top, y =TP_WZA_uncor, col = "WZA - As in main text") , lwd= 1.2)+
   theme_bw()+
   ggtitle("Truncated")+
-  scale_colour_brewer( palette = "Set1")+
-  scale_fill_brewer( palette = "Set1")+
+  scale_colour_brewer( palette = "Set1", guide = guide_legend(reverse = T))+
   scale_y_continuous("Proportion of True Positives Detected", expand = c(0,0))+
-  scale_x_continuous("Top # Genes")+
+  scale_x_continuous("Number of Genes in Top Set")+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
@@ -39,16 +38,16 @@ SNP_plot_trunc <- ggplot(SNP_num_trunc[SNP_num_trunc$rep == "mean",], aes( x = t
   )
 
 
-dir_cline_2SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/cline_sampled_s0.003_2SNPs.summary.csv")
+dir_cline_2SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/cline_sampled.WZA.n2.summary.csv")
 dir_cline_2SNPs$snps <- "WZA - 2 SNPs"
 
-dir_cline_4SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/cline_sampled_s0.003_4SNPs.summary.csv")
+dir_cline_4SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/cline_sampled.WZA.n4.summary.csv")
 dir_cline_4SNPs$snps <- "WZA - 4 SNPs"
 
-dir_cline_8SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/cline_sampled_s0.003_8SNPs.summary.csv")
+dir_cline_8SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/cline_sampled.WZA.n8.summary.csv")
 dir_cline_8SNPs$snps <- "WZA - 8 SNPs"
 
-dir_cline_w10000 <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/BayPassResults/s0.003/analysisFiles/cline_sampled.WZA.summary.csv")
+dir_cline_w10000 <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/s0.003/cline_sampled.WZA.summary.csv")
 dir_cline_w10000$snps <- "WZA - 10,000bp Window"
 
 SNP_num_cline <- rbind(dir_cline_2SNPs, dir_cline_4SNPs, dir_cline_8SNPs)
@@ -56,13 +55,12 @@ SNP_num_cline <- rbind(dir_cline_2SNPs, dir_cline_4SNPs, dir_cline_8SNPs)
 SNP_plot_cline <- ggplot(SNP_num_cline[SNP_num_cline$rep == "mean",], aes( x = top, y = TP_WZA_uncor, col = snps))+
   geom_line(lwd= 1.2)+
   geom_line(data=dir_cline_w10000[dir_cline_w10000$rep == "mean",], aes( x = top, y =TP_SNP_uncor, col = "Single SNP") , lwd= 1.2)+
-  geom_line(data=dir_cline_w10000[dir_cline_w10000$rep == "mean",], aes( x = top, y =TP_WZA_uncor, col = "WZA - 10,000bp Window") , lwd= 1.2)+
+  geom_line(data=dir_trunc_w10000[dir_trunc_w10000$rep == "mean",], aes( x = top, y =TP_WZA_uncor, col = "WZA - As in main text") , lwd= 1.2)+
   theme_bw()+
   ggtitle("Gradient")+
-  scale_colour_brewer( palette = "Set1")+
-  scale_fill_brewer( palette = "Set1")+
+  scale_colour_brewer( palette = "Set1", guide = guide_legend(reverse = T))+
   scale_y_continuous("Proportion of True Positives Detected", expand = c(0,0))+
-  scale_x_continuous("Top # Genes")+
+  scale_x_continuous("Number of Genes in Top Set")+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
@@ -74,16 +72,16 @@ SNP_plot_cline <- ggplot(SNP_num_cline[SNP_num_cline$rep == "mean",], aes( x = t
     plot.title = element_text(hjust = 0.5, size = 15)
   )
 
-dir_BC_Map_2SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/BC_Map_sampled_sampled_s0.003_2SNPs.summary.csv")
+dir_BC_Map_2SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/BC_Map_sampled.WZA.n2.summary.csv")
 dir_BC_Map_2SNPs$snps <- "WZA - 2 SNPs"
 
-dir_BC_Map_4SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/BC_Map_sampled_sampled_s0.003_4SNPs.summary.csv")
+dir_BC_Map_4SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/BC_Map_sampled.WZA.n4.summary.csv")
 dir_BC_Map_4SNPs$snps <- "WZA - 4 SNPs"
 
-dir_BC_Map_8SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/BC_Map_sampled_sampled_s0.003_8SNPs.summary.csv")
+dir_BC_Map_8SNPs <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/SNP_number_s0.003/BC_Map_sampled.WZA.n8.summary.csv")
 dir_BC_Map_8SNPs$snps <- "WZA - 8 SNPs"
 
-dir_BC_Map_w10000 <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/BayPassResults/s0.003/analysisFiles/BC_Map_sampled.WZA.summary.csv")
+dir_BC_Map_w10000 <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/s0.003/BC_Map_sampled.WZA.summary.csv")
 dir_BC_Map_w10000$snps <- "WZA - 10,000bp Window"
 
 SNP_num_BC_Map <- rbind(dir_BC_Map_2SNPs, dir_BC_Map_4SNPs, dir_BC_Map_8SNPs)
@@ -91,13 +89,12 @@ SNP_num_BC_Map <- rbind(dir_BC_Map_2SNPs, dir_BC_Map_4SNPs, dir_BC_Map_8SNPs)
 SNP_plot_BC_Map <- ggplot(SNP_num_BC_Map[SNP_num_BC_Map$rep == "mean",], aes( x = top, y = TP_WZA_uncor, col = snps))+
   geom_line(lwd= 1.2)+
   geom_line(data=dir_BC_Map_w10000[dir_BC_Map_w10000$rep == "mean",], aes( x = top, y =TP_SNP_uncor, col = "Single SNP") , lwd= 1.2)+
-  geom_line(data=dir_BC_Map_w10000[dir_BC_Map_w10000$rep == "mean",], aes( x = top, y =TP_WZA_uncor, col = "WZA - 10,000bp Window") , lwd= 1.2)+
+  geom_line(data=dir_trunc_w10000[dir_trunc_w10000$rep == "mean",], aes( x = top, y =TP_WZA_uncor, col = "WZA - As in main text") , lwd= 1.2)+
   theme_bw()+
   ggtitle("BC Map")+
-  scale_colour_brewer( palette = "Set1")+
-  scale_fill_brewer( palette = "Set1")+
+  scale_colour_brewer( palette = "Set1", guide = guide_legend(reverse = T))+
   scale_y_continuous("Proportion of True Positives Detected", expand = c(0,0))+
-  scale_x_continuous("Top # Genes")+
+  scale_x_continuous("Number of Genes in Top Set")+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
@@ -115,7 +112,7 @@ SNP_plot_BC_Map <- ggplot(SNP_num_BC_Map[SNP_num_BC_Map$rep == "mean",], aes( x 
 
 
 
-pdf("~/work/GEA/simulations/Plots/SNP_number.pdf", height = 5, width = 14, onefile = F. labels = "AUTO")
+pdf("~/work/GEA/simulations/Plots/SNP_number.pdf", height = 5, width = 14, onefile = F, labels = "AUTO")
 ggarrange(SNP_plot_BC_Map,SNP_plot_cline, SNP_plot_trunc,nrow= 1, ncol = 3, common.legend = T, legend = "right") 
 dev.off()
 
@@ -136,12 +133,9 @@ BC_Map_MAX$gene
 BC_Map_instance<-read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/s0.003/BC_Map_sampled/4_0.003_directional_d40n50_i10000.csv")
 
 BC_Map_rep <- BC_Map_wza[BC_Map_wza$rep== 4,]
-<<<<<<< HEAD
 TEMP <- BC_Map_instance[BC_Map_instance$gene %in% paste("gene",726, sep = ""),]
 min(TEMP$position)
 max(TEMP$position)
-=======
->>>>>>> origin/master
 
 BC_Map_instance_SNPs <- ggplot(data = BC_Map_instance[BC_Map_instance$gene %in% paste("gene",(726-6):(726+6), sep = ""),], aes( x = position/1e6, y = -log10(geno_k_tau_p_value), col = pbar_qbar))+
   geom_point()+

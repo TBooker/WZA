@@ -5,13 +5,13 @@
 ## 40% Fitness difference
 s = 0.0055
 nLoci = 12
-(1+s*-7)^nLoci /(1+s*7)^nLoci 
+1-(1+s*-7)^nLoci /(1+s*7)^nLoci 
 
 
 ## 40% Fitness difference
 s = 0.003
 nLoci = 12
-(1+s*-7)^nLoci /(1+s*7)^nLoci 
+1-(1+s*-7)^nLoci /(1+s*7)^nLoci 
 
 ## 25% Fitness difference
 s = 0.0017
@@ -43,8 +43,8 @@ gaussianFitness <- function(phen, opt, Vs){
 }
 
 ## 40% Fitness difference
-Vs = 192
-gaussianFitness(-7,7,Vs)/ gaussianFitness(7,7,Vs)
+Vs = 196
+1-gaussianFitness(-7,7,Vs)/ gaussianFitness(7,7,Vs)
 
 ## 10% Fitness difference
 Vs = 900

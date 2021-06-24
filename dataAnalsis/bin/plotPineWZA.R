@@ -45,8 +45,9 @@ Z_4 <- pine[pine$contig == "C32557620_55842_67865", ]
 x = 10
 
 ##Make a PNW appropriate colour pallete for the plot
-colour_palette <- pnw_palette(name="Sunset2",n=4,type="discrete")
 
+#colour_palette <- pnw_palette(name="Sunset2",n=4,type="discrete")
+colour_palette <- c("#E69F00", "#56B4E9", "#D55E00", "#CC79A7")
 corre <-cor( -log10(pine$top_candidate_p), y = pine$Z, method = "spearman")
 
 cor_text = bquote("Spearman's" ~ rho ~ "=" ~ .(corre))
@@ -55,30 +56,30 @@ png("~/UBC/GEA/WZA/dataAnalsis/topCandidate_versus_WZA_DD_0.png", units = "in", 
 ggplot( data = pine, aes(x = -log10(top_candidate_p), y = Z))+
   geom_point(alpha = 0.5)+
   scale_y_continuous(expression(Z[W]))+
-  scale_x_continuous(expression(-log[10]*"(Top-Candidate Test "*italic("p")*"-value)"))+
+  scale_x_continuous(expression(-log[10]*"(Top-Candidate Score)"))+
 #  annotate("text", label = cor_text, x = 60, y = 0)+
   theme_bw()
 dev.off()
 
 part_1 <- ggplot( data = pine, aes(x = -log10(top_candidate_p), y = Z))+
   geom_point(alpha = 0.5)+
-  geom_point( data = Z_1, aes(x = -log10(top_candidate_p), y = Z), fill = colour_palette[1], size = 3, shape = 21)+
-  geom_point( data = Z_2, aes(x = -log10(top_candidate_p), y = Z), fill = colour_palette[2], size = 3, shape = 21)+
-  geom_point( data = Z_3, aes(x = -log10(top_candidate_p), y = Z), fill = colour_palette[3], size = 3, shape = 21)+
-  geom_point( data = Z_4, aes(x = -log10(top_candidate_p), y = Z), fill = colour_palette[4], size = 3, shape = 21)+
+  geom_point( data = Z_3, aes(x = -log10(top_candidate_p), y = Z), fill = colour_palette[1], size = 4.5, shape = 21)+
+  geom_point( data = Z_4, aes(x = -log10(top_candidate_p), y = Z), fill = colour_palette[4], size = 4.5, shape = 21)+
+  geom_point( data = Z_1, aes(x = -log10(top_candidate_p), y = Z), fill = colour_palette[3], size = 4.5, shape = 21)+
+  geom_point( data = Z_2, aes(x = -log10(top_candidate_p), y = Z), fill = colour_palette[2], size = 4.5, shape = 21)+
   scale_y_continuous(expression(Z[W]))+
-  scale_x_continuous(expression(-log[10]*"(Top-Candidate Test "*italic("p")*"-value)"))+
+  scale_x_continuous(expression(-log[10]*"(Top-Candidate Index)"))+
   theme_bw()
 
 MAF_plot_1 <- ggplot( data = raw_1, aes(x = minor_freq, y = -log10(DD_0_ep)))+
-  geom_point(alpha = 0.9, fill = colour_palette[1],  shape = 21)+
+  geom_point(alpha = 0.9, fill = colour_palette[3],  shape = 21)+
   theme_bw()+
   geom_hline(aes( yintercept = -log10(0.01) ), lty = 2, alpha = 0.6)+
   scale_y_continuous(expression(-log[10]*"(empirical p-value)"),limits = c(-1, 6))+
   scale_x_continuous("Minor Allele Frequency")
 
 POS_plot_1 <- ggplot( data = raw_1, aes(x = pos_gcontig, y = -log10(DD_0_ep)))+
-  geom_point(alpha = 0.9, fill = colour_palette[1],  shape = 21)+
+  geom_point(alpha = 0.9, fill = colour_palette[3],  shape = 21)+
   theme_bw()+
   geom_hline(aes( yintercept = -log10(0.01) ), lty = 2, alpha = 0.6)+
   scale_y_continuous(expression(-log[10]*"(empirical p-value)"),limits = c(-1, 6))+
@@ -101,7 +102,7 @@ POS_plot_2 <- ggplot( data = raw_2, aes(x = pos_gcontig, y = -log10(DD_0_ep)))+
 
 
 MAF_plot_3 <- ggplot( data = raw_3, aes(x = minor_freq, y = -log10(DD_0_ep)))+
-  geom_point(alpha = 0.9, fill = colour_palette[3], shape = 21)+
+  geom_point(alpha = 0.9, fill = colour_palette[1], shape = 21)+
   theme_bw()+
   geom_hline(aes( yintercept = -log10(0.01) ), lty = 2, alpha = 0.6)+
   scale_y_continuous(expression(-log[10]*"(empirical p-value)"),limits = c(-1, 6))+
@@ -109,7 +110,7 @@ MAF_plot_3 <- ggplot( data = raw_3, aes(x = minor_freq, y = -log10(DD_0_ep)))+
 
 
 POS_plot_3 <- ggplot( data = raw_3, aes(x = pos_gcontig, y = -log10(DD_0_ep)))+
-  geom_point(alpha = 0.9, fill = colour_palette[3], shape = 21)+
+  geom_point(alpha = 0.9, fill = colour_palette[1], shape = 21)+
   theme_bw()+
   geom_hline(aes( yintercept = -log10(0.01) ), lty = 2, alpha = 0.6)+
   scale_y_continuous(expression(-log[10]*"(empirical p-value)"),limits = c(-1, 6))+
@@ -143,7 +144,9 @@ dev.off()
 png("~/UBC/GEA/WZA/dataAnalsis/Z_v_POS_DD0.png", res = 300, height = 10, width = 5, units= "in")
 ggarrange(part_1, POS_part_2, labels = c("A", ""), nrow = 2, heights = c(2,3))
 dev.off()
-
+x<- rnorm(100)
+cor(x, x)
+x<-rep(c(1,2), each = 50)
 
 # 
 # pine_bay <- read.csv("~/UBC/GEA/WZA/dataAnalsis/AdapTreeData/DD_0_Pine_BF.csv")
@@ -206,8 +209,9 @@ DD0_dist <- ggplot(data = pine_env, aes( x  = DD_0))+
   scale_x_continuous(expression(italic("Degree Days < 0")))+
   theme_bw()
 
-pdf("~/UBC/GEA/WZA/dataAnalsis/pineAnalysis_SuppFig.pdf", height = 10, width = 6)
-ggarrange(DD0_dist, Pine_Z_dist, ncol = 1, nrow = 2, labels = "AUTO")
+pdf("~/UBC/GEA/WZA/dataAnalsis/pineAnalysis_SuppFig.pdf", height = 5, width = 6)
+print(Pine_Z_dist)
+#ggarrange(DD0_dist, Pine_Z_dist, ncol = 1, nrow = 2, labels = "AUTO")
 dev.off()
 
 

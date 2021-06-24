@@ -9,7 +9,7 @@ cline_10000_Vs192 <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3
 trunc_10000_Vs192 <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/BayPassResults/Vs192/analysisFiles/trunc_sampled.WZA.csv")
 
 bc_10000_Vs192$map <- "BC Map"
-cline_10000_Vs192$map <- "Cline"
+cline_10000_Vs192$map <- "Gradient"
 trunc_10000_Vs192$map <- "Truncated"
 stablising_data <- rbind( bc_10000_Vs192, cline_10000_Vs192, trunc_10000_Vs192 )
 stablising_data$model <- "Stabilising Selection"
@@ -20,7 +20,7 @@ trunc_10000_s0.003 <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.
 
 
 bc_10000_s0.003$map <- "BC Map"
-cline_10000_s0.003$map <- "Cline"
+cline_10000_s0.003$map <- "Gradient"
 trunc_10000_s0.003$map <- "Truncated"
 directional_data <- rbind( bc_10000_s0.003, cline_10000_s0.003, trunc_10000_s0.003 )
 directional_data$model <- "Directional Selection"
@@ -32,7 +32,7 @@ effectSizeDistribution_dir <- ggplot()+
   geom_histogram( data=directional_data[directional_data$LA > 0, ], aes( x= LA ), bins = 50, fill = "#91cf60", col = "black")+
   geom_vline(xintercept = 0.005, col = "red", lty = 2)+
   facet_wrap(model~ map)+
-  xlab("Covariance of Phenotype and Environment")+
+  xlab("Covariance of Fitness and Environment")+
   ylab("Count")+
   theme_bw()+
   theme(

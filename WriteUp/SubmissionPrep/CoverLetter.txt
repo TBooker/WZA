@@ -1,0 +1,7 @@
+Dear Editor,
+
+Please find attached our manuscript entitled "The WZA: A window-based method for characterizing genotype-environment association". Understanding the genetic basis of local adaptation is  important in both evolutionary biology and in practical applications of genetics such as conservation and forestry. Genotype-environment association (GEA) analysis is a potentially powerful method to identify the genetic basis of local adaptation and GEA has been widely adopted in recent years. However, the most widely used GEA approaches do not incorporate genetic linkage, but there are numerous theoretical reasons to expect that genomic regions evolving under local adaptation may exhibit higher linkage disequilibrium than the genomic background. In this study, we propose the WZA, a GEA method that builds linkage into GEA analyses. We performed a large simulation study to compare our method with other GEA approaches and found that the WZA did indeed outperform other GEA approaches in a range of settings. The WZA performed particularly well when small samples were analysed. Given the wide adoption of GEA analyses, and the history of population genetic methods being published in Genome Research, we think that our paper would be a good fit at your journal. 
+
+Thank you for your consideration,
+
+Tom Booker (on behalf of all co-authors)

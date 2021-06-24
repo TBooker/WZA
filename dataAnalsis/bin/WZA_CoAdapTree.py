@@ -12,23 +12,23 @@ class corLine:
 
 		dat = c.strip().split()
 
-		self.contig = dat[0].split("-")[0]
+		self.contig = dat[0]
 
-		self.pos = int(dat[0].split("-")[1])
+		self.pos = int(dat[1])
 
 ## The data in the Correlations file are stored as contig-pos, so I'll parse that out
 ## Note that this is VERY sensitive to the file structure staying the same
-		self.env = dat[1]
+		self.env = dat[2]
 
-		self.rho = float(dat[2])
+		self.rho = float(dat[3])
 
-		self.pVal = float(dat[3])
+		self.pVal = float(dat[4])
 
-		MAF = float(dat[4])
+		MAF = float(dat[5])
 
 		self.pbar_qbar = MAF * (1 - MAF) 
 
-		self.emp_pVal = float(dat[5])
+		self.emp_pVal = float(dat[6])
 
 
 ## A generator function to spit out the consecutive lines for the contig
@@ -41,7 +41,7 @@ def contigGenerator(correlationFile, envFilter):
 	with open( correlationFile ) as cor:
 		for c in cor:
 ## Ignore the header
-			if c.startswith("snp"):continue
+			if c.startswith("snp") or c.startswith("contig"):continue
 			
 			currentLine = corLine(c)
 
@@ -245,7 +245,7 @@ def main():
 		for contig,SNPs in contigGenerator(args.correlations, env):
 ## Grab all the genes present on this contig
 			contigDF = contigSnpTable(SNPs, annotations[annotations["seqname"] == contig])
-#			print(contigDF)
+		#	print(contigDF)
 ## If there are no annotations on the current contig, move to the next
 			if contigDF.shape == (0,0):
 				continue
