@@ -201,9 +201,9 @@ dev.off()
 
  # Mike suggested removing the line plots from this figure, so here's a version wthout them
 
-BC_panel_plot_noLine <-   annotate_figure( ggarrange(BC_allSNPs, BC_WZA, BC_TC, ncol = 3, nrow = 1, legend = "right", labels = c("I","J", "K"), common.legend = T), top = "BC Map")
-cline_panel_plot_noLine <-   annotate_figure( ggarrange(cline_allSNPs, cline_WZA, cline_TC, ncol = 3, nrow = 1, legend = "right", labels = c("I","J", "K"), common.legend = T), top = "Gradient Map")
-trunc_panel_plot_noLine <-   annotate_figure( ggarrange(trunc_allSNPs, trunc_WZA, trunc_TC, ncol = 3, nrow = 1, legend = "right", labels = c("I","J", "K"), common.legend = T), top = "Truncated Map")
+BC_panel_plot_noLine <-   annotate_figure( ggarrange(BC_allSNPs, BC_WZA, BC_TC, ncol = 3, nrow = 1, legend = "right", labels = c("A","B", "C"), common.legend = T), top = "BC Map")
+cline_panel_plot_noLine <-   annotate_figure( ggarrange(cline_allSNPs, cline_WZA, cline_TC, ncol = 3, nrow = 1, legend = "right", labels = c("D","E", "F"), common.legend = T), top = "Gradient Map")
+trunc_panel_plot_noLine <-   annotate_figure( ggarrange(trunc_allSNPs, trunc_WZA, trunc_TC, ncol = 3, nrow = 1, legend = "right", labels = c("H","I", "J"), common.legend = T), top = "Truncated Map")
 
 png("~/work/GEA/simulations/Plots/ThreeRowDemoPlot_noLine.png", 
     units = "in", 

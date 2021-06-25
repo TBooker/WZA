@@ -112,7 +112,7 @@ SNP_plot_BC_Map <- ggplot(SNP_num_BC_Map[SNP_num_BC_Map$rep == "mean",], aes( x 
 
 
 
-pdf("~/work/GEA/simulations/Plots/SNP_number.pdf", height = 5, width = 14, onefile = F, labels = "AUTO")
+pdf("~/work/GEA/simulations/Plots/SNP_number.pdf", height = 5, width = 14, onefile = F)
 ggarrange(SNP_plot_BC_Map,SNP_plot_cline, SNP_plot_trunc,nrow= 1, ncol = 3, common.legend = T, legend = "right") 
 dev.off()
 

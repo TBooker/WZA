@@ -66,9 +66,9 @@ paletteCB <- c("#999999",
 
 
 sampleSizeComparison <- ggplot(data = gea[gea$rep == "mean",])+
-  geom_line(aes(x = top, y = TP_SNP_uncor, col = "Kendall's tau"), lwd = 1)+
-  geom_line(aes(x = top, y = TP_TC_uncor, col = "Top-Candidate"), lwd = 1)+
-  geom_line(aes(x = top, y = TP_WZA_empR, col = "WZA"), lwd = 1)+
+  geom_line(aes(x = top/1000, y = TP_SNP_uncor, col = "Kendall's tau"), lwd = 1)+
+  geom_line(aes(x = top/1000, y = TP_TC_uncor, col = "Top-Candidate"), lwd = 1)+
+  geom_line(aes(x = top/1000, y = TP_WZA_empR, col = "WZA"), lwd = 1)+
   facet_grid(source~map)+
   scale_color_manual("Method", values = paletteCB, labels = c(expression("WZA"*tau),
                                                             expression("Top-candidate"),
@@ -76,13 +76,14 @@ sampleSizeComparison <- ggplot(data = gea[gea$rep == "mean",])+
                      breaks = c("WZA","Top-Candidate","Kendall's tau"))+
   scale_y_continuous("Proportion of True Positives Detected", limits = c(0,1))+
   theme_bw()+
-  scale_x_continuous("Number of Genes in Top Set")+
+  scale_x_continuous('Fraction of all genes in the top set')+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
     strip.background = element_blank(),
     legend.text.align = 0,
     #    strip.text.y = element_text(size = 12),
+    axis.text.x = element_text(angle = 30),
     strip.text.y = element_text(size = 12),
     strip.text.x = element_text(size = 12),
     plot.title = element_text(hjust = 0.5, size = 15)
@@ -100,24 +101,25 @@ whole_pops <- rbind( bc_all, trunc_all, cline_all )
 
 
 wholePopComparison <- ggplot(data = whole_pops[whole_pops$rep == "mean",])+
-  geom_line(aes(x = top, y = TP_SNP_uncor, col = "SNP-based"), lwd = 1)+
-  geom_line(aes(x = top, y = TP_TC_uncor, col = "Top-Candidate"), lwd = 1)+
-  geom_line(aes(x = top, y = TP_WZA_empR, col = "WZA"), lwd = 1)+
+  geom_line(aes(x = top/1000, y = TP_SNP_uncor, col = "SNP-based"), lwd = 1)+
+  geom_line(aes(x = top/1000, y = TP_TC_uncor, col = "Top-Candidate"), lwd = 1)+
+  geom_line(aes(x = top/1000, y = TP_WZA_empR, col = "WZA"), lwd = 1)+
   facet_grid(source~map)+
   scale_color_manual("Method", values = paletteCB, labels = c(expression("WZA"*tau),
                                                               expression("Top-candidate"),
                                                               expression("Kendall's "* tau)),
                      breaks = c("WZA","Top-Candidate","SNP-based"))+
   
-  scale_y_continuous("Proportion of True Positives Detected", limits = c(0,1))+
+  scale_y_continuous("Proportion of true positives detected", limits = c(0,1))+
       theme_bw()+
-  scale_x_continuous("Number of Genes in Top Set")+
+  scale_x_continuous('Fraction of all genes in the top set')+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
     strip.background = element_blank(),
     #    strip.text.y = element_text(size = 12),
     legend.text.align = 0,
+    axis.text.x = element_text(angle = 30),
     strip.text.y = element_text(size = 12),
     strip.text.x = element_text(size = 12),
     plot.title = element_text(hjust = 0.5, size = 15)

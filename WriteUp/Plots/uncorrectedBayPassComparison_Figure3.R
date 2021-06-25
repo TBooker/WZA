@@ -48,21 +48,21 @@ stab_cline$map <- "Gradient"
 stab_trunc <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/BayPassResults/Vs192/analysisFiles/trunc_sampled.WZA.summary.csv")
 stab_trunc$map <- "Truncated"
 
-Stabilising<- rbind(stab_bc_map, stab_cline, stab_trunc)
+Stabilizing<- rbind(stab_bc_map, stab_cline, stab_trunc)
 
-Stabilising_id_vars_uncor <- names(Stabilising)[!(names(Stabilising)%in%c( "PCE_SNP_uncor", "PCE_WZA_empR"))]
-Stabilising_TruePositives_Uncor <- melt( Stabilising, id = Stabilising_id_vars_uncor  )
-Stabilising_TruePositives_Uncor$data <- "Uncorrected p-values"
-Stabilising_TruePositives_Uncor$variable <- factor(Stabilising_TruePositives_Uncor$variable,
+Stabilizing_id_vars_uncor <- names(Stabilizing)[!(names(Stabilizing)%in%c( "PCE_SNP_uncor", "PCE_WZA_empR"))]
+Stabilizing_TruePositives_Uncor <- melt( Stabilizing, id = Stabilizing_id_vars_uncor  )
+Stabilizing_TruePositives_Uncor$data <- "Uncorrected p-values"
+Stabilizing_TruePositives_Uncor$variable <- factor(Stabilizing_TruePositives_Uncor$variable,
                                                    levels = c( "PCE_SNP_uncor",  "PCE_WZA_empR"),
                                                    labels = c("B_PCE_SNP_uncor","A_PCE_WZA_empR"))
 #,
 #                                                   labels = c( expression("Kendall's "*tau),   expression("WZA"*tau)))
 
-Stabilising_id_vars_BayPass <- names(Stabilising)[!(names(Stabilising)%in%c( "PCE_SNP_bayP", "PCE_WZA_bayP"))]
-Stabilising_TruePositives_Baypass <- melt( Stabilising, id = Stabilising_id_vars_BayPass)
-Stabilising_TruePositives_Baypass$data <-  "BayPass"
-Stabilising_TruePositives_Baypass$variable <- factor(Stabilising_TruePositives_Baypass$variable,
+Stabilizing_id_vars_BayPass <- names(Stabilizing)[!(names(Stabilizing)%in%c( "PCE_SNP_bayP", "PCE_WZA_bayP"))]
+Stabilizing_TruePositives_Baypass <- melt( Stabilizing, id = Stabilizing_id_vars_BayPass)
+Stabilizing_TruePositives_Baypass$data <-  "BayPass"
+Stabilizing_TruePositives_Baypass$variable <- factor(Stabilizing_TruePositives_Baypass$variable,
                                                      levels = c( "PCE_SNP_bayP", "PCE_WZA_bayP"),
                                                      labels = c("D_PCE_SNP_bayP","C_PCE_WZA_bayP"))
 #,
@@ -73,11 +73,11 @@ Stabilising_TruePositives_Baypass$variable <- factor(Stabilising_TruePositives_B
 
 
 Directional_TruePositives_Uncor$selection <- "Directional Selection"
-Stabilising_TruePositives_Uncor$selection <- "Stabilising Selection"
+Stabilizing_TruePositives_Uncor$selection <- "Stabilizing Selection"
 
 
 Directional_TruePositives_Baypass$selection <- "Directional Selection"
-Stabilising_TruePositives_Baypass$selection <- "Stabilising Selection"
+Stabilizing_TruePositives_Baypass$selection <- "Stabilizing Selection"
 
 
 
@@ -94,8 +94,8 @@ labs1 = c(expression("WZA"*tau),
           expression("BayPass"))
 
 directional_truePositives <- ggplot()+
-  geom_line(data = Directional_TruePositives_Uncor[Directional_TruePositives_Uncor$rep == "mean",], aes( x = top, y = value, col = variable), lwd = 1)+
-  geom_line(data = Directional_TruePositives_Baypass[Directional_TruePositives_Baypass$rep == "mean",], aes( x = top, y = value, col = variable), lwd = 1)+
+  geom_line(data = Directional_TruePositives_Uncor[Directional_TruePositives_Uncor$rep == "mean",], aes( x = top/1000, y = value, col = variable), lwd = 1)+
+  geom_line(data = Directional_TruePositives_Baypass[Directional_TruePositives_Baypass$rep == "mean",], aes( x = top/1000, y = value, col = variable), lwd = 1)+
   facet_grid(selection~ map)+
   theme_bw()+
   ggtitle("Directional Selection")+
@@ -103,13 +103,14 @@ directional_truePositives <- ggplot()+
                      values = paletteCB,
                      labels = labs1)+
   
-  scale_y_continuous(expression("Proportion of True Positives Detected"), expand = c(0,0))+
-  scale_x_continuous("Number of Genes in Top Set")+
+  scale_y_continuous(expression("Proportion of true positives detected"), expand = c(0,0))+
+  scale_x_continuous('Fraction of all genes in the top set')+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
     strip.background = element_blank(),
     strip.text.y = element_blank(),
+    axis.text.x = element_text(angle = 30),
     strip.text.x = element_text(size = 9),
     axis.title.y = element_text(size = 9),
     legend.text.align = 0,   
@@ -118,8 +119,8 @@ directional_truePositives <- ggplot()+
   )
 
 stablising_truePositives <- ggplot()+
-  geom_line(data = Stabilising_TruePositives_Uncor[Stabilising_TruePositives_Uncor$rep == "mean",], aes( x = top, y = value, col = variable), lwd = 1)+
-  geom_line(data = Stabilising_TruePositives_Baypass[Stabilising_TruePositives_Baypass$rep == "mean",], aes( x = top, y = value, col = variable), lwd = 1)+
+  geom_line(data = Stabilizing_TruePositives_Uncor[Stabilizing_TruePositives_Uncor$rep == "mean",], aes( x = top/1000, y = value, col = variable), lwd = 1)+
+  geom_line(data = Stabilizing_TruePositives_Baypass[Stabilizing_TruePositives_Baypass$rep == "mean",], aes( x = top/1000, y = value, col = variable), lwd = 1)+
   facet_grid(selection~ map)+
   theme_bw()+
   ggtitle("Stablising Selection")+
@@ -127,13 +128,14 @@ stablising_truePositives <- ggplot()+
                       values = paletteCB,
                      labels = labs1)+
                      
-  scale_y_continuous(expression("Proportion of Cov["*italic("phen, env")*"] Explained"), expand = c(0,0))+
-  scale_x_continuous("Number of Genes in Top Set")+
+  scale_y_continuous(expression("Proportion of Cov["*italic("phen, env")*"] explained"), expand = c(0,0))+
+  scale_x_continuous('Fraction of all genes in the top set')+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
     strip.background = element_blank(),
     strip.text.y = element_blank(),
+    axis.text.x = element_text(angle = 30),
     strip.text.x = element_text(size = 9),
     axis.title.y = element_text(size = 9),
     legend.text.align = 0,
@@ -142,7 +144,7 @@ stablising_truePositives <- ggplot()+
   )
 
 combinedPlot <- ggarrange(annotate_figure(directional_truePositives, top = "Directional Selection"), 
-                          annotate_figure(stablising_truePositives, top = "Stabilising Selection"), 
+                          annotate_figure(stablising_truePositives, top = "Stabilizing Selection"), 
                           ncol= 1, nrow =2, common.legend = T,
                           legend = "right", labels = "AUTO")
 
@@ -191,17 +193,17 @@ Directional_FalsePositives_Baypass$variable <- factor(Directional_FalsePositives
 
 
 
-Stabilising_FalsePositives_Uncor_ID_Vars <- names(Stabilising)[!(names(Stabilising)%in%c( "FD_SNP_uncor", "FD_TC_uncor", "FD_WZA_empR"))]
-Stabilising_FalsePositives_Uncor <- melt( Stabilising, id = Stabilising_FalsePositives_Uncor_ID_Vars  )
-Stabilising_FalsePositives_Uncor$data <- "Uncorrected p-values"
-Stabilising_FalsePositives_Uncor$variable <- factor(Stabilising_FalsePositives_Uncor$variable,
+Stabilizing_FalsePositives_Uncor_ID_Vars <- names(Stabilizing)[!(names(Stabilizing)%in%c( "FD_SNP_uncor", "FD_TC_uncor", "FD_WZA_empR"))]
+Stabilizing_FalsePositives_Uncor <- melt( Stabilizing, id = Stabilizing_FalsePositives_Uncor_ID_Vars  )
+Stabilizing_FalsePositives_Uncor$data <- "Uncorrected p-values"
+Stabilizing_FalsePositives_Uncor$variable <- factor(Stabilizing_FalsePositives_Uncor$variable,
                                                     levels = c( "FD_SNP_uncor", "FD_TC_uncor", "FD_WZA_empR"),
                                                     labels = c( "SNP-based", "Top-Candidate", "WZA"))
 
-Stabilising_FalsePositives_Uncor_ID_Vars <- names(Stabilising)[!(names(Stabilising)%in%c( "FD_SNP_bayP", "FD_TC_bayP", "FD_WZA_bayP"))]
-Stabilising_FalsePositives_Baypass <- melt( Stabilising, id = c( "X" , "top" ,"TP_SNP_bayP", "FD_SNP_uncor",  "TP_TC_bayP", "FD_TC_uncor","TP_WZA_bayP","FD_WZA_uncor",   "TP_SNP_uncor",   "TP_TC_uncor",  "TP_WZA_uncor", "TP_WZA_empR",  "rep", "map")  )
-Stabilising_FalsePositives_Baypass$data <-  "BayPass"
-Stabilising_FalsePositives_Baypass$variable <- factor(Stabilising_FalsePositives_Baypass$variable,
+Stabilizing_FalsePositives_Uncor_ID_Vars <- names(Stabilizing)[!(names(Stabilizing)%in%c( "FD_SNP_bayP", "FD_TC_bayP", "FD_WZA_bayP"))]
+Stabilizing_FalsePositives_Baypass <- melt( Stabilizing, id = c( "X" , "top" ,"TP_SNP_bayP", "FD_SNP_uncor",  "TP_TC_bayP", "FD_TC_uncor","TP_WZA_bayP","FD_WZA_uncor",   "TP_SNP_uncor",   "TP_TC_uncor",  "TP_WZA_uncor", "TP_WZA_empR",  "rep", "map")  )
+Stabilizing_FalsePositives_Baypass$data <-  "BayPass"
+Stabilizing_FalsePositives_Baypass$variable <- factor(Stabilizing_FalsePositives_Baypass$variable,
                                                       levels = c( "FD_SNP_bayP", "FD_TC_bayP", "FD_WZA_bayP"),
                                                       labels = c( "SNP-based", "Top-Candidate", "WZA"))
 
@@ -209,29 +211,30 @@ Stabilising_FalsePositives_Baypass$variable <- factor(Stabilising_FalsePositives
 
 
 Directional_FalsePositives_Uncor$selection <- "Directional Selection"
-Stabilising_FalsePositives_Uncor$selection <- "Stabilising Selection"
+Stabilizing_FalsePositives_Uncor$selection <- "Stabilizing Selection"
 
 
 Directional_FalsePositives_Baypass$selection <- "Directional Selection"
-Stabilising_FalsePositives_Baypass$selection <- "Stabilising Selection"
+Stabilizing_FalsePositives_Baypass$selection <- "Stabilizing Selection"
 
 
 
 
 directional_falsePositives <- ggplot()+
-  geom_line(data = Directional_FalsePositives_Uncor[Directional_FalsePositives_Uncor$rep == "mean",], aes( x = top, y = value, col = variable), lwd = 0.9)+
-  geom_line(data = Directional_FalsePositives_Baypass[Directional_FalsePositives_Baypass$rep == "mean",], aes( x = top, y = value, col = variable), lwd = 0.9)+
+  geom_line(data = Directional_FalsePositives_Uncor[Directional_FalsePositives_Uncor$rep == "mean",], aes( x = top/1000, y = value, col = variable), lwd = 0.9)+
+  geom_line(data = Directional_FalsePositives_Baypass[Directional_FalsePositives_Baypass$rep == "mean",], aes( x = top/1000, y = value, col = variable), lwd = 0.9)+
   facet_grid(data ~ map)+
   theme_bw()+
   ggtitle("Directional Selection")+
   scale_color_manual("Method", values = paletteCB)+
   scale_y_continuous("False Discovery Rate\n(False Positives/Number of Number of Genes in Top Set)", expand = c(0,0))+
-  scale_x_continuous("Number of Genes in Top Set")+
+  scale_x_continuous('Fraction of all genes in the top set')+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
     strip.background = element_blank(),
     #    strip.text.y = element_text(size = 12),
+    axis.text.x = element_text(angle = 30),
     strip.text.y = element_blank(),
     strip.text.x = element_text(size = 12),
     plot.title = element_text(hjust = 0.5, size = 15)
@@ -239,14 +242,14 @@ directional_falsePositives <- ggplot()+
 
 
 stabilising_falsePositives <- ggplot()+
-  geom_line(data = Stabilising_FalsePositives_Uncor[Stabilising_FalsePositives_Uncor$rep == "mean",], aes( x = top, y = value, col = variable), lwd = 1)+
-  geom_line(data = Stabilising_FalsePositives_Baypass[Stabilising_FalsePositives_Baypass$rep == "mean",], aes( x = top, y = value, col = variable), lwd = 1)+
+  geom_line(data = Stabilizing_FalsePositives_Uncor[Stabilizing_FalsePositives_Uncor$rep == "mean",], aes( x = top/1000, y = value, col = variable), lwd = 1)+
+  geom_line(data = Stabilizing_FalsePositives_Baypass[Stabilizing_FalsePositives_Baypass$rep == "mean",], aes( x = top/1000, y = value, col = variable), lwd = 1)+
   facet_grid(data ~ map)+
   theme_bw()+
-  ggtitle("Stabilising Selection")+
+  ggtitle("Stabilizing Selection")+
   scale_color_manual("Method", values = paletteCB)+
-  scale_y_continuous("False Discovery Rate \n(False Positives/Number of Number of Genes in Top Set)", expand = c(0,0))+
-  scale_x_continuous("Number of Genes in Top Set")+
+  scale_y_continuous("False discovery rate \n(False Positives/Number of Number of Genes in Top Set)", expand = c(0,0))+
+  scale_x_continuous('Fraction of all genes in the top set')+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
@@ -255,6 +258,7 @@ stabilising_falsePositives <- ggplot()+
     strip.text.x = element_text(size = 12),
     plot.title = element_text(hjust = 0.5, size = 15),
     axis.text.y = element_blank(),
+    axis.text.x = element_text(angle = 30),
     axis.title.y = element_blank(),
     axis.ticks.y = element_blank()
     
@@ -269,11 +273,11 @@ dev.off()
 
 
 ## Make a plot of ProbGen poster
-probGenData_Uncor <- Stabilising_TruePositives_Uncor[Stabilising_TruePositives_Uncor$rep == "mean",]
+probGenData_Uncor <- Stabilizing_TruePositives_Uncor[Stabilizing_TruePositives_Uncor$rep == "mean",]
 probGenData_Uncor <- probGenData_Uncor[probGenData_Uncor$map == "BC Map",]
 probGenData_Uncor <- probGenData_Uncor[probGenData_Uncor$variable != "Top-Candidate",]
 
-probGenData_Baypass <- Stabilising_TruePositives_Baypass[Stabilising_TruePositives_Baypass$rep == "mean",]
+probGenData_Baypass <- Stabilizing_TruePositives_Baypass[Stabilizing_TruePositives_Baypass$rep == "mean",]
 probGenData_Baypass <- probGenData_Baypass[probGenData_Baypass$map == "BC Map",]
 probGenData_Baypass <- probGenData_Baypass[probGenData_Baypass$variable != "Top-Candidate",]
 
@@ -296,18 +300,19 @@ probGenData_Baypass$data <- factor(probGenData_Baypass$data,
                                    labels = c( "BayPass"))
 
 stablising_truePositives <- ggplot()+
-  geom_line(data = probGenData_Uncor, aes( x = top, y = value, col = variable), lwd = 1)+
-  geom_line(data = probGenData_Baypass, aes( x = top, y = value, col = variable), lwd = 1)+
+  geom_line(data = probGenData_Uncor, aes( x = top/1000, y = value, col = variable), lwd = 1)+
+  geom_line(data = probGenData_Baypass, aes( x = top/1000, y = value, col = variable), lwd = 1)+
   facet_grid( ~ data, drop = T)+
   theme_bw()+
-  ggtitle("Stablising Selection")+
+  ggtitle("Stablizing Selection")+
   scale_color_manual("Method", values = c(paletteCB[2],paletteCB[4]))+
   scale_y_continuous(expression("Proportion of local adaptation explained"), expand = c(0,0))+
-  scale_x_continuous("Number of Genes in Top Set")+
+  scale_x_continuous('Fraction of all genes in the top set')+
   coord_cartesian(ylim = c(0,1))+
   theme(
     panel.spacing.y = unit(1,"lines"),
     strip.background = element_blank(),
+    axis.text.x = element_text(angle = 30),
     strip.text.y = element_text(size = 12),
     strip.text.x = element_text(size = 12),
     plot.title = element_text(hjust = 0.5, size = 15)
@@ -333,7 +338,7 @@ stab_cline_wza$map <- "Gradient map"
 stab_trunc_wza <- read.csv("~/work/GEA/simulations/directionalSelection/G.2.3/BayPassResults/Vs192/analysisFiles/trunc_sampled.WZA.csv")
 stab_trunc_wza$map <- "Truncated map"
 stab <- rbind(stab_BC_wza,  stab_cline_wza, stab_trunc_wza )
-stab$selection <- "Stabilising Selection"
+stab$selection <- "Stabilizing Selection"
 
 sel <- rbind( dir, stab )
 
