@@ -1,5 +1,7 @@
 # WZA
 A repository containing the analysis scripts and simulation configuration files to accompany our project on the Weighted-Z Analysis for GEA (WZA) 
 
-The code in the ```dataAnalysis/``` directory contains the functions to aggregate data across sites in GEA studies that we are working on.
+## Note
+I was using this repository while developing and performing analyses for the project described in our preprint.
 
+There is another WZA repository that contains more complete READMEs and information under the CoAdapTree GitHub profile: [https://github.com/CoAdapTree/WZA](https://github.com/CoAdapTree/WZA)
