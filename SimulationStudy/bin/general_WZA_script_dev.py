@@ -1,11 +1,11 @@
 import pandas as pd
 import scipy.stats
 import numpy as np
-import sys, argparse
+import sys, glob, argparse
 from scipy.stats import norm
 
 
-def WZA( gea , statistic , MAF_filter = 0.05):
+def WZA( gea , statistic , MAF_filter = 0.05, unweighted=False):
 ## gea - the name of the pandas dataFrame with the gea results
 ## statistic - the name of the column with your p-values
 ## MAF_filter - the lowest MAF you wil tolerate
@@ -22,6 +22,8 @@ def WZA( gea , statistic , MAF_filter = 0.05):
 	gea["z_score"] = scipy.stats.norm.ppf(1 - np.array( gea[statistic], dtype = float))
 
 	gea["pbar_qbar"] = gea["MAF"]*(1-gea["MAF"])
+	if unweighted == True:
+		gea["pbar_qbar"] = 1
 
 ## Apply the MAF filter
 	gea_filt = gea[ gea["MAF"] > MAF_filter ].copy()
@@ -140,6 +142,13 @@ def main():
 			help = "[OPTIONAL] Give the number of SNPs you want to downsample to. Give -1 if you want to use the 75th percentile of the number of SNPs. Note that calculating the median within the script is slow, so you may want to run a dummy analysis, get the median number of SNPs then use that explicitly.",
 			default = 0)
 
+	parser.add_argument("--snp_window",
+			required = False,
+			dest = "snp_window",
+			type = int,
+			help = "[OPTIONAL] Give the number of SNPs you want to downsample to. Give -1 if you want to use the 75th percentile of the number of SNPs. Note that calculating the median within the script is slow, so you may want to run a dummy analysis, get the median number of SNPs then use that explicitly.",
+			default = 0)
+
 	parser.add_argument("--resamples",
 			required = False,
 			dest = "resamples",
@@ -194,27 +203,45 @@ def main():
 	args = parser.parse_args()
 
 	csv = pd.read_csv(args.correlations, sep = args.sep)
-
 	if args.window not in list(csv):
 		print("The window variable you provided is not in the dataframe you gave")
 		return
-	if args.summary_stat not in list(csv):
-		print("The summary statistic variable you provided is not in the dataframe you gave")
-		return
+#	if args.summary_stat not in list(csv):
+#		print("The summary statistic variable you provided is not in the dataframe you gave")
+#		return
+
 
 	if "MAF" in list(csv):
 		pass
 	else:
 		csv["MAF"] = csv[args.MAF].copy()
 
-	if args.large_i_small_p:
-		if args.summary_stat =="RDA":
-			csv["pVal"] =  1 - (csv[args.summary_stat]**2).rank()/csv.shape[0]
-		else:
-			csv["pVal"] =  1 - csv[args.summary_stat].rank()/csv.shape[0]
-
+	if args.summary_stat =="parametric":
+		csv["pVal"] = csv["geno_k_tau_p_value"]
 	else:
-		csv["pVal"] = csv[args.summary_stat].rank()/csv.shape[0]
+		if args.large_i_small_p:
+			if args.summary_stat =="RDA":
+				csv["pVal"] =  1 - (csv[args.summary_stat]**2).rank()/csv.shape[0]
+			else:
+				csv["pVal"] =  1 - csv[args.summary_stat].rank()/csv.shape[0]
+		else:
+			csv["pVal"] = csv[args.summary_stat].rank()/csv.shape[0]
+
+
+	if args.snp_window !=0:
+		window_dat = []
+		for win in set(	csv[args.window]):
+			slice = csv[csv[args.window]==win].copy().reset_index()
+			nrows = slice.shape
+			ind = 0
+			for s in range(0,slice.shape[0], args.snp_window):
+				ind +=1
+				if s+args.snp_window >slice.shape[0]:continue
+				lil_slice = slice.iloc[s:s+args.snp_window].copy()
+				lil_slice[args.window] =lil_slice[args.window]+"_"+str(ind)
+				window_dat.append(lil_slice)
+		csv = pd.concat(window_dat)
+
 
 	csv_genes = csv[csv[args.window]!="none"]
 

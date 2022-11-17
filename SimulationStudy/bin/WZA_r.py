@@ -5,7 +5,7 @@ import sys, glob, argparse
 from collections import Counter
 
 ## I'm going to write a set of functions that perform the statistical tests on each of the genes - looking for signatures of local adaptation
-## Each one is going to return a value for each gene - whether a particular test identified positive selection or not.
+## Each one is going to return a value for each gene - whether a particular test identified positive selection or not. 
 
 ## Here's the function that implements the Weighted Z Analysis (WZA) on the SLiMulated data
 
@@ -16,7 +16,7 @@ def WZA( GEA , statistic , MAF_filter = 0.05, varName = "", groupVar = "gene"):
 ## MAF_filter - the lowest MAF you wil tolerate
 ## varName - the column name for the weigted Z results
 
-## Very small p-values throw Infinities when converted to z_scores, so I convert them to small numbers (i.e. 1e-15), or real big ones (1-1e-3)
+## Very small p-values throw Infinities when converted to z_scores, so I convert them to small numbers (i.e. 1e-15)
 
 	GEA[statistic] = GEA[statistic].clip(lower = 1e-15 )
 	GEA[statistic] = GEA[statistic].replace(1 , 1-1e-3)
@@ -29,11 +29,11 @@ def WZA( GEA , statistic , MAF_filter = 0.05, varName = "", groupVar = "gene"):
 
 ## Calculate the numerator and the denominator for the WZA
 	gea_filt[varName+"_weiZ_num"] = gea_filt["pbar_qbar"] * gea_filt["z"]
-	gea_filt[varName+"_weiZ_den"] =  gea_filt["pbar_qbar"]**2
+	gea_filt[varName+"_weiZ_den"] =  gea_filt["pbar_qbar"]**2 	
 	numerator = gea_filt.groupby([groupVar])[varName+"_weiZ_num"].sum().to_frame()
 	denominator = np.sqrt(gea_filt.groupby([groupVar])[varName+"_weiZ_den"].sum()).to_frame()
 
-## We've calculated the num. and the den., let's make a dataframe that has both
+## We've calculated the num. and the den., let's make a dataframe that has both 
 	weiZ  = pd.concat([numerator,denominator], axis = 1, sort = False)
 ## Actually calculate the Z scores for each gene
 	weiZ[varName + "_Z"] = weiZ[varName+"_weiZ_num"] / weiZ[varName+"_weiZ_den"]
@@ -43,7 +43,7 @@ def WZA( GEA , statistic , MAF_filter = 0.05, varName = "", groupVar = "gene"):
 ## Generic function calculate the proportion of values with a a p_value passing a given threshold
 
 
-## A really straightforward per SNP classification:
+## A really straightforward per SNP classification: 
 ## What is the rank order of genes based on individual SNP values?
 
 ## R Code
@@ -52,36 +52,36 @@ def WZA( GEA , statistic , MAF_filter = 0.05, varName = "", groupVar = "gene"):
 NumberOfTruePositives <- function( gea_results, path, suffix, LA_thresh ){
   falsePositiveDF <- data.frame(0,0,0,0,0)
   names(falsePositiveDF) <-  c("rep","top", "truePositive_WZA","truePositive_TC","truePositive_SNPs")
-
+  
   for (rep in 1:20){
-
+    
     temp <- gea_results[gea_results$rep == rep,]
     temp <- temp[temp$LA != -99,]
     numberLA <- length(droplevels(temp[temp$LA > LA_thresh,]$gene))
     LA_genes <- droplevels(unique(temp[temp$LA > LA_thresh,]$gene))
-
+    
     snps <- read.csv(paste(path, rep, suffix, sep = ''))
     snps <- snps[snps$LA != -99,]
-
+    
     snps <- snps[ with(snps, order(ave(geno_k_tau_p_value, gene, FUN = min), geno_k_tau_p_value)),]
     snp_based_genes <- unique( snps$gene )
-
+    
     for (n in 1:50){
-
+      
       WZA_slice <- temp[temp$Z_empirical_p <= (n+1)/1000,]
       TC_slice <- temp[temp$TC_empirical_p <= (n+1)/1000,]
       SNP_slice <- snp_based_genes[1:n]
-
+      
       #      SNP_slice <- snps[snps$rank <= n,] ## Grab the top n SNPs from the genome scan
-
+      
       #      numberLA_SNP_slice <- length(unname(unique(SNP_slice[-log10(SNP_slice$LA) > 3.0,]$gene)))
-
+      
       truePositive_WZA = sum( WZA_slice$LA > LA_thresh )/numberLA
       truePositive_TC = sum( TC_slice$LA > LA_thresh )/numberLA
       truePositive_SNPs = sum(SNP_slice%in%LA_genes)/numberLA
-
+      
       falsePositiveDF[(50*(rep-1))+n,] <- c(rep, n, truePositive_WZA, truePositive_TC, truePositive_SNPs)
-
+      
     }
   }
   falsePositiveDF
@@ -92,7 +92,7 @@ NumberOfTruePositives <- function( gea_results, path, suffix, LA_thresh ){
 def simple_classifier( gea, statistic, MAF_filter = 0.05, bayPass = False, label = "", groupVar = "gene"):
 
 	gea_filt = gea[ gea["maf"] > MAF_filter ]
-
+	
 	## Get the maximum test statistic per gene
 	## A little Pandas magic...
 		# Group by "gene"
@@ -103,7 +103,7 @@ def simple_classifier( gea, statistic, MAF_filter = 0.05, bayPass = False, label
 
 	genes_ranked[label+"_rank"] = genes_ranked[label+"_"+statistic].rank()
 
-	return genes_ranked
+	return genes_ranked	
 
 ## A function for performing the top-candidate test
 def top_candidate( gea_raw, statistic, MAF_filter = 0.05, log10= True, label = ""):
@@ -112,7 +112,7 @@ def top_candidate( gea_raw, statistic, MAF_filter = 0.05, log10= True, label = "
 ## thresh - the p_value threshold for determining hits
 ## MAF_filter - the lowest MAF you wil tolerate
 ## prop_hits - the average probability of getting a hit
-
+	
 
 ## Apply the MAF filter
 	gea = gea_raw[gea_raw["maf"] > MAF_filter ].copy()
@@ -127,13 +127,13 @@ def top_candidate( gea_raw, statistic, MAF_filter = 0.05, log10= True, label = "
 		gea["hits"] = ( gea[statistic] > thresh).astype(int)
 	prop_hits = 0.01
 
-
+	
 ## Count the hits per gene
 	num_hits = gea.groupby(["gene"])["hits"].sum().to_frame()
 ## Count the SNPs per gene
 	num_SNPs = gea.groupby(["gene"])["hits"].count().to_frame()
 ## Make a single DF with the hits and the SNPs
-	TC  = pd.concat([num_hits, num_SNPs], axis = 1, sort = False)
+	TC  = pd.concat([num_hits, num_SNPs], axis = 1, sort = False) 
 ## Name the cols
 	if label != "":
 		name_to_add = label +"_"
@@ -142,7 +142,7 @@ def top_candidate( gea_raw, statistic, MAF_filter = 0.05, log10= True, label = "
 
 	TC.columns = [name_to_add + "hits",  name_to_add +"SNPs"]
 
-	aveHits = TC[TC[name_to_add +"hits"]!=0][name_to_add +"hits"].sum() / TC[TC[name_to_add +"hits"]!=0][name_to_add +"SNPs"].sum()
+	aveHits = TC[TC[name_to_add +"hits"]!=0][name_to_add +"hits"].sum() / TC[TC[name_to_add +"hits"]!=0][name_to_add +"SNPs"].sum() 
 
 ## Init an empty vector for p_values (the top-candidate index)
 	p_vals = []
@@ -172,23 +172,23 @@ def distance_to_PVE(localAdaptation, geneMiddles, PVE_threshold, directional = T
 		else:
 			if localAdaptation[k] >= PVE_threshold:
 				PVE_genes_positions.append( geneMiddles[k] )
-
+	
 ## Init a dict to store the gene positions
 #	print(PVE_genes_positions)
 	dist_dict = {}
 ## If there is no PVE genes in the simulation, say that the dist is 1e6 (i.e. the length of the chromosome)
 	if len(PVE_genes_positions) == 0:
 		for k in geneMiddles.keys():
-			dist_dict[k] = 1e6
+			dist_dict[k] = 1e6 
 ## If there IS PVE genes in the simulation, get the distance to the nearest one for each gene
 	else:
 		for k in geneMiddles.keys():
-			dist_dict[k] = min([abs(geneMiddles[k] - X) for X in PVE_genes_positions] )
+			dist_dict[k] = min([abs(geneMiddles[k] - X) for X in PVE_genes_positions] ) 
 ## Turn the distance dict into a dataframe
 	return( pd.Series( dist_dict , name = "distToPVE") )
 
 ## A master function to analyse a directory full of simulation results
-def analyseSimSet(simulationSet, PVE_threshold = 0.005, bayPass = "none", rda = "none", IBA = False, shuffle = False, MAF_filter = 0.05, unweighted = False):
+def analyseSimSet(simulationSet, PVE_threshold = 0.001, bayPass = "none", IBA = False):
 
 ## Iterate over all GEA files in the directory
 	for r in simulationSet:
@@ -203,70 +203,31 @@ def analyseSimSet(simulationSet, PVE_threshold = 0.005, bayPass = "none", rda = 
 			gea_data = gea_data_raw[gea_data_raw["position"] > 8000000].copy().reset_index()
 		else:
 			gea_data = pd.read_csv( r )
-		print(gea_data)
-## Due to a typo, some of the sims had pbar_q_bar in the header instead of pbar_qbar, so I just fix that here
-		if "pbar_q_bar" in list(gea_data):
-			gea_data.rename(columns={"pbar_q_bar":"pbar_qbar"}, inplace = True)
-
-
-## To test the effect of the SNP weights, let's optionally set pbar_qbar to 1:
-		if unweighted:
-			gea_data = gea_data.assign(pbar_qbar=1)
-
-## Perform the MAF filter
-		maf_filt_bool =  gea_data["maf"] > MAF_filter
-
-		gea_data = gea_data[maf_filt_bool].copy()
-## Calculate the empirical p-values on the correlation coefficient (Kendall's tau in this case)
-		gea_data["empR_pVal"] =  scipy.stats.rankdata( abs(gea_data["geno_k_tau_p_value"]) )/ len(gea_data["geno_k_tau_p_value"])
-
-		print(gea_data.geno_k_tau_p_value.min())
-
-## Do the analysis on Kendall's tau
-		SNP_results = simple_classifier( gea_data , "geno_k_tau_p_value" ,label = "kendall")
-
-## Do the analysis on RDA data
-		if rda != "none":
-			print(rda)
-			rda_file = rda + "/" + r.split("/")[-1].split(".csv")[0] + ".rda.txt"
-			print(rda)
-			rda_data = pd.read_csv( rda_file )
-			rda_data = rda_data[maf_filt_bool].copy()
-
-			rda_data["pVal"] =  1 - scipy.stats.rankdata( rda_data["RDA1"]*rda_data["RDA1"] )/ len(rda_data["RDA1"])
-			rda_data["gene"] = gea_data["gene"]
-			rda_data["maf"] = gea_data["maf"]
-			rda_data["pbar_qbar"] = gea_data["pbar_qbar"]
 
 ## IF there are BayPass results in the directory, this is where we handle them...
 		if bayPass != "none":
 			bayPass_file = bayPass + "/" + r.split("/")[-1].split(".csv")[0] + ".bayPass_summary_betai_reg.out"
+			if IBA:
+				bayPass_file = bayPass + "/" + rep + "_0.003_directiona_d40n50_IBA_i10000.neutralChrom.bayPass_summary_betai_reg.out"
 
 ## BayPass output files are written with a variable number of white spaces as a delimiter
 ## The regex r"\s+" tells pandas that there are a variable number of white spaces
 			bayPass_data = pd.read_csv( bayPass_file ,sep = r"\s+", engine = "python")
-			bayPass_data = bayPass_data[maf_filt_bool].copy()
 
-## If the number of rows inthe GEA file and the BayPass file don't match then that's a problem
+## If the number of rows inthe GEA file and the BayPass file don't match then that's a problem 
 			if  gea_data.shape[0] !=  bayPass_data.shape[0] :
 				print("Something went haywire with the BayPass and Uncorrected data")
 				return
+				
 
 ## Convert the Bayes Factors into empirical P values
 ## I just rank the values using the rankdata() function (which does so in ascending order) and divide the ranks by the number of rows in the dataframe
 ## one minus that value gives the empirical P value
-
 			bayPass_data["pVal"] =  1 - scipy.stats.rankdata( bayPass_data["BF(dB)"] )/ len(bayPass_data["BF(dB)"])
+			
 			bayPass_data["gene"] = gea_data["gene"]
 			bayPass_data["maf"] = gea_data["maf"]
 			bayPass_data["pbar_qbar"] = gea_data["pbar_qbar"]
-
-## Shuffle the DF if you want
-		if shuffle == True:
-			gea_data["gene"] = gea_data.gene.sample(frac = 1).values
-			if bayPass != "none":
-				bayPass_data["gene"] = bayPass_data.gene.sample(frac = 1).values
-
 
 ## Make a dataframe with all the PVEs per gene
 		LA = gea_data.groupby(["gene"])["LA"].mean().to_frame()
@@ -276,47 +237,30 @@ def analyseSimSet(simulationSet, PVE_threshold = 0.005, bayPass = "none", rda = 
 		distance = distance_to_PVE(LA.to_dict()["LA"], position.to_dict()["position"], PVE_threshold)
 
 ## Do the top-candidate and WZA on uncorrected data AND do WZA on BayPass
-		wza_results_corr = WZA( gea_data ,  "empR_pVal", varName = "empR")
-		wza_results_kendall = WZA( gea_data ,  "geno_k_tau_p_value", varName = "kendall")
-		TC_results_kendall = top_candidate( gea_data, "geno_k_tau_p_value")
+		if bayPass != "none":
+			wza_results_kendall = WZA( gea_data ,  "geno_k_tau_p_value", varName = "Z_kendall") 
+			wza_results_bayPass = WZA( bayPass_data , "pVal", varName = "Z_bayPass") 
+			TC_results_baypass = top_candidate( bayPass_data, "pVal" , label = "BP") 
+			TC_results_kendall = top_candidate( gea_data, "geno_k_tau_p_value") 
+ 
+			SNP_results_bayPass = simple_classifier( bayPass_data , "pVal" , bayPass = True, label = "BF" )
+			SNP_results_kendall = simple_classifier( gea_data , "geno_k_tau_p_value"  ,label = "kendall")
+## Do the top-candidate and WZA on uncorrected data
+		else:
+			TC_results = top_candidate( gea_data, "geno_k_tau_p_value") 
+			wza_results = WZA( gea_data ,  "geno_k_tau_p_value") 
+			SNP_results = simple_classifier( gea_data , "geno_k_tau_p_value" )
+
 
 		if bayPass != "none":
-			wza_results_bayPass = WZA( bayPass_data , "pVal", varName = "bayPass")
-			TC_results_baypass = top_candidate( bayPass_data, "pVal" , label = "BP")
-			SNP_results_bayPass = simple_classifier( bayPass_data , "pVal" , bayPass = True, label = "BF" )
-## Do the top-candidate and WZA on uncorrected data
-		if rda != "none":
-			wza_results_RDA = WZA( rda_data , "pVal", varName = "RDA")
-			TC_results_RDA = top_candidate( rda_data, "pVal" , label = "RDA")
-			SNP_results_RDA = simple_classifier( rda_data , "pVal" , bayPass = True, label = "RDA" )
-
-		results = pd.concat([ distance,
-				wza_results_kendall,
-				wza_results_corr,
-				TC_results_kendall,
-				SNP_results,
-				LA,
-				position ] , axis = 1, sort = True )
-## Change this to make a sequential thing - like, do this by default then add BayPass then add RDA
+			results = pd.concat([ distance, wza_results_kendall, wza_results_bayPass, TC_results_baypass, TC_results_kendall, SNP_results_bayPass, SNP_results_kendall, LA, position ] , axis = 1, sort = True ).reset_index()
+			print(results)
+		else:
+			results = pd.concat([ distance, wza_results, TC_results, SNP_results, LA, position ] , axis = 1, sort = True ).reset_index()
 
 		results["rep"] = rep
 
-		if bayPass != "none":
-			print(wza_results_bayPass)
-			results = results.join(wza_results_bayPass)
-			results = results.join(TC_results_baypass)
-			results = results.join(SNP_results_bayPass)
-
-		if rda != "none":
-			results = results.join(wza_results_RDA)
-			results = results.join(TC_results_RDA)
-			results = results.join(SNP_results_RDA)
-
-		results.reset_index(inplace = True)
-		results.rename(columns = {"index":"gene"}, inplace = True)
-		print(results)
 		yield( results )
-
 
 """ R Code for the WZA would look something like:
 gea$z <- qnorm(gea$pop_k_tau_p_value, lower.tail = F)
@@ -338,54 +282,38 @@ Z <- weiZ_num/weiZ_den
 def main():
 ## Define command line args
 	parser = argparse.ArgumentParser(description="")
-	parser.add_argument("--csv",
+	parser.add_argument("--csv", 
 			required = True,
 			dest = "csv",
-			type = str,
+			type = str, 
 			help = "The directory containing the CSVs")
-	parser.add_argument("--output",
+	parser.add_argument("--output", 
 			required = True,
 			dest = "output",
-			type = str,
+			type = str, 
 			help = "The name of the output file")
-#	parser.add_argument("--neutral",
-#			action = "store_true",
-#			dest = "neutral",
-#			help = "Were these neutral simulations?")
-#	parser.add_argument("--sampled",
-#			action = "store_true",
-#			dest = "sampled",
-#			help = "Were these simulations downsampled (i.e. is there the tag 'd40_n50' on the file names?)")
-	parser.add_argument("--bayPass",
+	parser.add_argument("--neutral", 
+			action = "store_true",
+			dest = "neutral", 
+			help = "Were these neutral simulations?")
+	parser.add_argument("--sampled", 
+			action = "store_true",
+			dest = "sampled", 
+			help = "Were these simulations downsampled (i.e. is there the tag 'd40_n50' on the file names?)")
+	parser.add_argument("--bayPass", 
 			type = str,
-			dest = "bayPass",
+			dest = "bayPass", 
 			help = "Do you want to include BayPass results? If so, give the directory here",
 			default = "none")
-	parser.add_argument("--rda",
-			type = str,
-			dest = "rda",
-			help = "Do you want to include rda results? If so, give the directory here",
-			default = "none")
-	parser.add_argument("--directional",
+	parser.add_argument("--directional", 
 			action = "store_true",
-			dest = "directional",
-			help = "Are the simulations of directional selection?")
-	parser.add_argument("--IBA",
+			dest = "directional", 
+			help = "Are the simulations of directional selection?")			
+	parser.add_argument("--IBA", 
 			action = "store_true",
-			dest = "IBA",
+			dest = "IBA", 
 			help = "Do you want to restrict the analysis to the neutral fifth chromosome?",
 			default = False)
-	parser.add_argument("--shuffle",
-			action = "store_true",
-			dest = "shuffle",
-			help = "Do you want to shuffle the location of SNPs with respect to genes? This is for examining the distribution of WZA scores under the assumption of independence",
-			default = False)
-	parser.add_argument("--unweighted",
-			action = "store_true",
-			dest = "unweighted",
-			help = "Do you want to perform the WZA using an unweighted verion of the WZA? The ZA, if you will",
-			default = False)
-
 	args = parser.parse_args()
 
 ## Make a list for each of the simulation parameter sets
@@ -393,17 +321,13 @@ def main():
 	searchString = "/*.csv"
 
 	simSet = [i for i in glob.glob(args.csv + searchString)]
-
+		
 	all_results = []
 
-	for q in analyseSimSet(simSet, bayPass = args.bayPass,  rda = args.rda, IBA = args.IBA, shuffle = args.shuffle, unweighted = args.unweighted):
+	for q in analyseSimSet(simSet, bayPass = args.bayPass, IBA = args.IBA):
 		all_results.append( q.reset_index(drop=True) )
-
 	myData = pd.concat( all_results, sort = True ).reset_index(drop=True)
 
-	if args.bayPass == "none":
-		myData = myData.rename({"index":"gene"}, axis = "columns")
-	print(list(myData))
 	if "index" in list(myData):
 		myData = myData.drop(["index"], axis =1)
 
