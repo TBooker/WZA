@@ -3,7 +3,8 @@ import scipy.stats
 import numpy as np
 import sys, argparse
 from scipy.stats import norm
-
+from pandas.api.types import is_string_dtype
+from pandas.api.types import is_numeric_dtype
 
 def WZA( gea , statistic , MAF_filter = 0.05):
 ## gea - the name of the pandas dataFrame with the gea results
@@ -216,7 +217,7 @@ def main():
 	else:
 		csv["pVal"] = csv[args.summary_stat].rank()/csv.shape[0]
 
-	csv_genes = csv[csv[args.window]!="none"]
+	csv_genes = csv[csv[args.window]!="None"]
 
 	if args.verbose:
 		print("here's a peek at the input data")
@@ -255,6 +256,8 @@ def main():
 
 	for g in csv_gb_gene:
 		count += 1
+
+#		if count ==100: break
 		gene = g[0]
 		gene_df = g[1].copy()
 
@@ -296,10 +299,20 @@ def main():
 			print("\nAdding retained columns to the final dataframe")
 		retained_df_list = []
 		for r in args.retain:
-			retained_df_list.append( csv.groupby(args.window)[r].mean() )
-		retained_df = pd.concat(retained_df_list, axis = 1)
-		WZA_DF_tmp =  pd.concat( [ WZA_DF_temp.set_index(args.window), retained_df ] , axis = 1).reset_index()
+			if is_string_dtype(csv[r]):
+				print("!!!!!")
+				retained_df_list.append( csv.groupby(args.window)[r].apply(lambda x: x.iloc[0]) )
+			elif is_numeric_dtype(csv[r]):
+				retained_df_list.append( csv.groupby(args.window)[r].mean() )
 
+		retained_df = pd.concat(retained_df_list, axis = 1)
+		print(retained_df)
+		print(WZA_DF_temp)
+		WZA_DF_tmp =  pd.concat( [ WZA_DF_temp.set_index("gene"), retained_df ] , axis = 1).reset_index()
+
+		WZA_DF_tmp = WZA_DF_tmp[WZA_DF_tmp["index"]!="None"]
+		WZA_DF_tmp.rename(index={"index": "gene"},
+		inplace = True)
 		WZA_DF = adjust_WZA_with_spline( WZA_DF_tmp )
 #		output.to_csv(args.output, index = False)
 
