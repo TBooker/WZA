@@ -5,6 +5,8 @@ We call the method the WZA for short, and it's pronounced the same way that Wu-T
 
 A general purpose script for performing the WZA on input files (described below) can be found at [general_WZA_script.py](general_WZA_script.py). Instructions for usage of this script, along with a worked example are given below.
 
+We also include a thoroughly worked through example here: [simulationDataVignette/](simulationDataVignette/)
+
 This repository also contains code to simulate meta-populations adapting to heterogeneous environments and to perform GEA analyses on the resulting data. The directory [SimulationStudy/](SimulationStudy) contains more information on the simulations.  
 
 If you are interested in performing the WZA for your own projects, feel free to get in touch if you run into any implementation issues - either by raising an issue on this repository, or via email (my email address is given in my GitHub profile).
