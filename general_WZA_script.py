@@ -25,7 +25,7 @@ def WZA( gea , statistic , MAF_filter = 0.05):
 	gea["pbar_qbar"] = gea["MAF"]*(1-gea["MAF"])
 
 ## Apply the MAF filter
-	gea_filt = gea[ gea["MAF"] > MAF_filter ].copy()
+	gea_filt = gea[ gea["MAF"] >= MAF_filter ].copy()
 
 	if gea_filt.shape[0]==0:
 		return np.nan
@@ -58,8 +58,7 @@ def top_candidate( gea, thresh):
 
 	snps = gea.shape[0]
 
-	top_candidate_p = scipy.stats.binom_test(hits, snps, thresh, alternative = "greater" )
-
+	top_candidate_p = scipy.stats.binomtest(hits, snps, thresh, alternative = "greater" ).pvalue
 
 	return top_candidate_p, hits
 
@@ -192,6 +191,11 @@ def main():
 			type = str,
 			help = "Give any columns that you want to add to the output file")
 
+	parser.add_argument("--no_SNP_number_correction",
+			required = False,
+			action = "store_true",
+ 			help = "Provide this flag if you just want the raw WZA scores and to not perform the SNP number correction")
+
 	args = parser.parse_args()
 
 	csv = pd.read_csv(args.correlations, sep = args.sep)
@@ -231,7 +235,7 @@ def main():
 
 		csv_gb_gene_SNP_count = csv_genes.groupby(args.window)
 
-		num_SNP_list = np.array( [s[1].shape[0] for s in csv_gb_gene_SNP_count if s[1].shape[0] > args.min_snps]  )
+		num_SNP_list = np.array( [s[1].shape[0] for s in csv_gb_gene_SNP_count if s[1].shape[0] >= args.min_snps]  )
 
 ## Calculate the 75th percentile of SNPs per gene
 		max_SNP_count = int(np.percentile(num_SNP_list[num_SNP_list!=0], 75))
@@ -269,7 +273,6 @@ def main():
 		else:
 			wza = np.array( [ WZA(gene_df.sample(max_SNP_count), "pVal") for i in range(args.resamples ) ] ).mean()
 
-#		print(wza)
 
 		top_candidate_p, hits = top_candidate( gene_df, 1-(args.top_candidate_threshold/100))
 
@@ -291,10 +294,9 @@ def main():
 #			input("\nPress Enter to continue...")
 
 
-
 	if args.retain != None:
 		WZA_DF_temp =  pd.DataFrame( all_genes )
-
+		print(WZA_DF_temp.SNPs.var())
 		if args.verbose:
 			print("\nAdding retained columns to the final dataframe")
 		retained_df_list = []
@@ -306,18 +308,36 @@ def main():
 				retained_df_list.append( csv.groupby(args.window)[r].mean() )
 
 		retained_df = pd.concat(retained_df_list, axis = 1)
-		print(retained_df)
-		print(WZA_DF_temp)
 		WZA_DF_tmp =  pd.concat( [ WZA_DF_temp.set_index("gene"), retained_df ] , axis = 1).reset_index()
 
-		WZA_DF_tmp = WZA_DF_tmp[WZA_DF_tmp["index"]!="None"]
+		if "index" in list(WZA_DF_tmp):
+			WZA_DF_tmp = WZA_DF_tmp[WZA_DF_tmp["index"]!="None"]
 		WZA_DF_tmp.rename(index={"index": "gene"},
 		inplace = True)
+		if args.no_SNP_number_correction:
+			WZA_DF_tmp.to_csv(args.output, index = False)
+			return
+		if WZA_DF_tmp.SNPs.var()==0:
+			print("there is no variation in SNP number among your windows")
+			print("SNP number correction will acheive nothing, outputting raw WZA scores")
+			WZA_DF_tmp.to_csv(args.output, index = False)
+			return
+
 		WZA_DF = adjust_WZA_with_spline( WZA_DF_tmp )
 #		output.to_csv(args.output, index = False)
 
 	else:
 		WZA_DF_tmp =  pd.DataFrame( all_genes )
+		if WZA_DF_tmp.SNPs.var()==0:
+			print("NOTE!\nThere is no variation in SNP number among your windows")
+			print("SNP number correction will acheive nothing, outputting raw WZA scores")
+			WZA_DF_tmp.to_csv(args.output, index = False)
+			return
+
+		if args.no_SNP_number_correction:
+			WZA_DF_tmp.to_csv(args.output, index = False)
+			return
+
 		WZA_DF = adjust_WZA_with_spline( WZA_DF_tmp )
 
 	WZA_DF.to_csv(args.output, index = False)
