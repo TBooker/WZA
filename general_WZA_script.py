@@ -6,7 +6,7 @@ from scipy.stats import norm
 from pandas.api.types import is_string_dtype
 from pandas.api.types import is_numeric_dtype
 
-def WZA( gea , statistic , MAF_filter = 0.05):
+def WZA( gea , statistic , MAF_filter = 0.01):
 ## gea - the name of the pandas dataFrame with the gea results
 ## statistic - the name of the column with your p-values
 ## MAF_filter - the lowest MAF you wil tolerate
@@ -26,7 +26,9 @@ def WZA( gea , statistic , MAF_filter = 0.05):
 
 ## Apply the MAF filter
 	gea_filt = gea[ gea["MAF"] >= MAF_filter ].copy()
-
+	if gea_filt.shape[0] != gea.shape[0]:
+		print("WHAT THE FUCKKK!!!!")
+		return
 	if gea_filt.shape[0]==0:
 		return np.nan
 ## Calculate the numerator and the denominator for the WZA
@@ -62,17 +64,17 @@ def top_candidate( gea, thresh):
 
 	return top_candidate_p, hits
 
-def adjust_WZA_with_spline(wza_df, roller = 50):
+def adjust_WZA_with_spline(wza_df, roller = 50, minEntries = 40):
 
 	# remove null Z values - they won't help us
 	wza_t =  wza_df[ ~wza_df.Z.isnull() ].reset_index()
 	wza_s = wza_t.sort_values('SNPs')
 
-	rolled_Z_vars = wza_s.Z.rolling(window = roller).var()
+	rolled_Z_vars = wza_s.Z.rolling(window = roller, min_periods = minEntries).var()
 	masking_array = ~rolled_Z_vars.isnull()
 	rolled_Z_sd = np.sqrt(rolled_Z_vars)[masking_array]
-	rolled_Z_means = wza_s.Z.rolling(window = roller).mean()[masking_array]
-	rolled_mean_SNP_number = wza_s.SNPs.rolling(window = roller).mean()[masking_array]
+	rolled_Z_means = wza_s.Z.rolling(window = roller, min_periods = minEntries).mean()[masking_array]
+	rolled_mean_SNP_number = wza_s.SNPs.rolling(window = roller, min_periods = minEntries).mean()[masking_array]
 
 
 	# Generating weights for polynomial function with degree =2 - standard deviation
@@ -152,7 +154,7 @@ def main():
 			dest = "min_snps",
 			type = int,
 			help = "[OPTIONAL] Give the minimum number of SNPs you are willing to analyse per window. Default is 3",
-			default = 3)
+			default = 2)
 
 	parser.add_argument("--large_i_small_p",
 			required = False,
@@ -196,9 +198,14 @@ def main():
 			action = "store_true",
  			help = "Provide this flag if you just want the raw WZA scores and to not perform the SNP number correction")
 
+	parser.add_argument("--empiricalP",
+			required = False,
+			action = "store_true",
+ 			help = "Provide this flag if you have provided empirical p-values in your input dataframe")
+
 	args = parser.parse_args()
 
-	csv = pd.read_csv(args.correlations, sep = args.sep)
+	csv = pd.read_csv(args.correlations, sep = args.sep, engine = "python")
 
 	if args.window not in list(csv):
 		print("The window variable you provided is not in the dataframe you gave")
@@ -212,14 +219,21 @@ def main():
 	else:
 		csv["MAF"] = csv[args.MAF].copy()
 
-	if args.large_i_small_p:
-		if args.summary_stat =="RDA":
-			csv["pVal"] =  1 - (csv[args.summary_stat]**2).rank()/csv.shape[0]
-		else:
-			csv["pVal"] =  1 - csv[args.summary_stat].rank()/csv.shape[0]
+	maf_filter = 0.05
+## Apply MAF filter here...
+	csv = csv[csv["MAF"] > maf_filter]
 
+	if args.empiricalP:
+		csv["pVal"] = csv[args.summary_stat].copy()
 	else:
-		csv["pVal"] = csv[args.summary_stat].rank()/csv.shape[0]
+		if args.large_i_small_p:
+			if args.summary_stat =="RDA":
+				csv["pVal"] =  1 - (csv[args.summary_stat]**2).rank()/csv.shape[0]
+			else:
+				csv["pVal"] =  1 - csv[args.summary_stat].rank()/csv.shape[0]
+
+		else:
+			csv["pVal"] = csv[args.summary_stat].rank()/csv.shape[0]
 
 	csv_genes = csv[csv[args.window]!="None"]
 
@@ -280,7 +294,7 @@ def main():
 #		print(wza_emp_pVal)
 
 		if args.verbose:
-			print("\ngene #:", count, "\tgene:", gene,"\tWZA:",wza,"\tTC:", top_candidate_p)
+			print("\nGene #:", count, "\tgene:", gene,"\tWZA:",wza,"\tTC:", top_candidate_p)
 
 		output = {"gene": gene,
 					"SNPs":gene_df.shape[0],
